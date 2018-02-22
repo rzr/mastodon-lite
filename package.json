@@ -1,11 +1,25 @@
 {
   "name": "mastodon-lite",
   "version": "0.0.1",
-  "description": "Lightweight Mastodon micro bloging client module",
+  "description": "Lightweight Mastodon micro blogging client module supporting IoT.js runtime",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Philippe Coval <philippe.coval@osg.samsung.com>",
-  "license": "Apache-2.0"
+  "license": "Apache-2.0",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rzr/mastodon-lite.git"
+  },
+  "keywords": [
+    "mastodon",
+    "microblogging",
+    "client",
+    "iotjs-supported"
+  ],
+  "bugs": {
+    "url": "https://github.com/rzr/mastodon-lite/issues"
+  },
+  "homepage": "https://github.com/rzr/mastodon-lite"
 }
