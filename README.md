@@ -204,3 +204,4 @@ Alternatively gitmodule can be used to track master branch.
 * https://github.com/rzr/mastodon-lite
 * https://www.npmjs.com/package/mastodon-lite
 * http://iotjs.net
+* https://w3c.github.io/activitypub/
