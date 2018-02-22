@@ -14,8 +14,8 @@
  * limitations under the License.
  */
 
-//TODO: If used as module update with "require('mastodon-lite')" 
-var Mastodon = require('index.js');
+//TODO: Set modules path or replace with "require('index.js')"
+var Mastodon = require('mastodon-lite');
 
 var conf = process.env.HOME + "/.mastodon-lite.json";
 
@@ -24,10 +24,7 @@ var config = {
   hostname : 'mastodon.social',
   port : 443,
   api: '/api/v1/',
-  method : 'POST',
 };
-
-
 
 var fs = require('fs');
 var mastodon;
