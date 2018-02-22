@@ -85,7 +85,6 @@ Mastodon.prototype.get = function (path, callback) {
       if (true) console.log(data);
     }
   }
-  console.log(config);
   http.request(config, function(res) {
     receive(res, callback);
   }).end();
