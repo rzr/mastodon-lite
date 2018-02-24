@@ -30,7 +30,7 @@ var fs = require('fs');
 var mastodon;
 
 try {
-  config = require(conf);
+  config = JSON.parse(fs.readFileSync(conf, 'utf8'));
   //TODO: If used as module update with "require('mastodon-lite')" 
   mastodon = Mastodon(config);
 } catch(err)
