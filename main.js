@@ -1,4 +1,3 @@
-#!/usr/bin/env node
 // -*- mode: js; js-indent-level:2;  -*-
 /* Copyright 2017-present Samsung Electronics Co., Ltd. and other contributors
  *
