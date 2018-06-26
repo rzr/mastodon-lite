@@ -14,8 +14,13 @@
  * limitations under the License.
  */
 
-//TODO: Set modules path or replace with "require('index.js')"
-var Mastodon = require('mastodon-lite');
+var Mastodon = null;
+try {
+  Mastodon = require('mastodon-lite');
+} catch (err) {
+  Mastodon = require('./index');
+}
+
 
 var conf = process.env.HOME + "/.mastodon-lite.json";
 
