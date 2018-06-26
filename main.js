@@ -28,7 +28,8 @@ var config = {
   access_token: '[TODO: Update with app token at https://mastodon.social/settings/applications]',
   hostname : 'mastodon.social',
   port : 443,
-  api: '/api/v1/',
+  api: '/api/v1',
+  rejectUnauthorized: false
 };
 
 var fs = require('fs');
