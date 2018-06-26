@@ -36,19 +36,12 @@ On first run, if not already present, configuration file will generated in ~/.ma
 
 ```
 cd ../mastodon-lite
-NODE_PATH=.. nodejs main.js
+nodejs main.js
 error: TODO: edit configuration file ~/.mastodon-lite.json
 ```
 
 Then update credentials in template file with "Your access token" in earlier step,
 if running on different instance, host and port should be changed accordingly,
-
-
-For later use, let's export env:
-
-```
-export NODE_PATH=..
-```
 
 Alternatively, class can be included directly from current work directory:
 
@@ -184,7 +177,7 @@ IOTJS_EXTRA_MODULE_PATH=./node_modules/ iotjs ./main.js
 It's very similar to nodejs, just the PATH environment variable is changed:
 
 ```
-IOTJS_EXTRA_MODULE_PATH=.. iotjs main.js
+iotjs main.js
 ```
 
 Code can be imported using node npm package manager tool:
