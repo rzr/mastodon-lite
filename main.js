@@ -14,14 +14,12 @@
  * limitations under the License.
  */
 
-var Mastodon = null;
+var Mastodon;
 try {
-  Mastodon = require('mastodon-lite');
+  Mastodon = require('./mastodon-lite');
 } catch (err) {
-  Mastodon = require('./index');
+  Mastodon = require('mastodon-lite');
 }
-
-
 var conf = process.env.HOME + "/.mastodon-lite.json";
 
 var config = {

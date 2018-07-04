@@ -4,7 +4,7 @@
   "description": "Lightweight Mastodon micro blogging client module supporting IoT.js runtime",
   "main": "index.js",
   "scripts": {
-    "test": "NODE_PATH=. node main"
+    "test": "NODE_PATH=. node example"
   },
   "author": "Philippe Coval <philippe.coval@osg.samsung.com>",
   "license": "Apache-2.0",
