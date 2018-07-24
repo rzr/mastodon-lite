@@ -7,7 +7,11 @@ for supporting iotjs runtime, (as well as node).
 
 So far only 'https' module is used (and 'fs' for the example app)
 
+[![License](https://img.shields.io/badge/licence-Apache%202.0-brightgreen.svg?style=flat)](LICENSE)
+
 [![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2Frzr%2Fmastodon-lite.svg?type=shield)](https://app.fossa.io/projects/git%2Bgithub.com%2Frzr%2Fmastodon-lite?ref=badge_shield)
+
+[![NPM](https://nodei.co/npm/mastodon-lite.png)](https://npmjs.org/package/mastodon-lite)
 
 
 ## USAGE: ##
@@ -153,6 +157,11 @@ and client will get server's answer in this form:
   "emojis": []
 }
 ```
+
+
+### DEMO: ###
+
+[![web-of-things-agriculture-20180712rzr.webm](https://s-opensource.org/wp-content/uploads/2018/07/web-of-things-agriculture-20180712rzr.gif)](https://player.vimeo.com/video/279677314#web-of-things-agriculture-20180712rzr.webm "Video Demo")
 
 
 #### INTEGRATE ####
