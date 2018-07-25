@@ -1,3 +1,5 @@
+[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2Frzr%2Fmastodon-lite.svg?type=shield)](https://app.fossa.io/projects/git%2Bgithub.com%2Frzr%2Fmastodon-lite?ref=badge_shield)
+
 # MASTODON-LITE #
 
 Lightweight client for mastodon micro blogging service.
@@ -198,3 +200,7 @@ Alternatively gitmodule can be used to track master branch.
 * https://www.npmjs.com/package/mastodon-lite
 * http://iotjs.net
 * https://w3c.github.io/activitypub/
+
+
+## License
+[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2Frzr%2Fmastodon-lite.svg?type=large)](https://app.fossa.io/projects/git%2Bgithub.com%2Frzr%2Fmastodon-lite?ref=badge_large)
