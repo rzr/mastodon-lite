@@ -1,5 +1,3 @@
-[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2Frzr%2Fmastodon-lite.svg?type=shield)](https://app.fossa.io/projects/git%2Bgithub.com%2Frzr%2Fmastodon-lite?ref=badge_shield)
-
 # MASTODON-LITE #
 
 Lightweight client for mastodon micro blogging service.
@@ -8,6 +6,8 @@ This implementation is focusing on reducing dependencies,
 for supporting iotjs runtime, (as well as node).
 
 So far only 'https' module is used (and 'fs' for the example app)
+
+[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2Frzr%2Fmastodon-lite.svg?type=shield)](https://app.fossa.io/projects/git%2Bgithub.com%2Frzr%2Fmastodon-lite?ref=badge_shield)
 
 
 ## USAGE: ##
@@ -202,5 +202,6 @@ Alternatively gitmodule can be used to track master branch.
 * https://w3c.github.io/activitypub/
 
 
-## License
+## LICENSE: ##
+
 [![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2Frzr%2Fmastodon-lite.svg?type=large)](https://app.fossa.io/projects/git%2Bgithub.com%2Frzr%2Fmastodon-lite?ref=badge_large)
