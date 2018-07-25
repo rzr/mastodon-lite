@@ -38,7 +38,7 @@ On first run, if not already present, configuration file will generated in ~/.ma
 
 ```
 cd ../mastodon-lite
-NODE_PATH=. node main
+node example
 error: TODO: edit configuration file ~/.mastodon-lite.json
 ```
 
@@ -51,7 +51,7 @@ if running on different instance, host and port should be changed accordingly,
 By default timeline will be displayed:
 
 ```
-node main
+node example
 ```
 
 Response is a JSON stream of all posts:
@@ -76,7 +76,7 @@ Response is a JSON stream of all posts:
 To post a message, just add a quoted message as parameter:
 
 ```
-NODE_PATH=. node main 'https://www.npmjs.com/package/mastodon-lite# #MastodonLite : A lightweight #Mastodon client to support #ConstraintedDevices using #IotJs cc: @TizenHelper@quitter.is '
+node example 'https://www.npmjs.com/package/mastodon-lite# #MastodonLite : A lightweight #Mastodon client to support #ConstraintedDevices using #IotJs cc: @TizenHelper@quitter.is '
 ```
 
 Message (toot) should be displayed on your profile's page (ie: https://mastodon.social/@tizenhelper/99568473401250711 )
@@ -162,7 +162,7 @@ Module is in NPM repo, so it can be added using npm tool:
 ```
 ls package.json || npm init
 npm install mastodon-lite
-NODE_PATH=node_modules node node_modules/mastodon-lite/main
+NODE_PATH=node_modules node node_modules/mastodon-lite/example
 ```
 
 
@@ -171,7 +171,7 @@ NODE_PATH=node_modules node node_modules/mastodon-lite/main
 It's very similar to nodejs, just the PATH environment variable is changed:
 
 ```
-iotjs main.js
+iotjs example
 ```
 
 Code can be imported using node npm package manager tool:
@@ -179,7 +179,7 @@ Code can be imported using node npm package manager tool:
 ```
 ls package.json || npm init
 npm install mastodon-lite
-IOTJS_EXTRA_MODULE_PATH=./node_modules/ iotjs node_modules/mastodon-lite/main
+IOTJS_EXTRA_MODULE_PATH=./node_modules/ iotjs node_modules/mastodon-lite/example
 
 ```
 

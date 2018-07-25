@@ -16,7 +16,7 @@
 
 var Mastodon;
 try {
-  Mastodon = require('./mastodon-lite');
+  Mastodon = require('../mastodon-lite');
 } catch (err) {
   Mastodon = require('mastodon-lite');
 }
