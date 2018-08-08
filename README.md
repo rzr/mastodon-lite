@@ -13,6 +13,8 @@ So far only 'https' module is used (and 'fs' for the example app)
 
 [![NPM](https://nodei.co/npm/mastodon-lite.png)](https://npmjs.org/package/mastodon-lite)
 
+[![dependencies Status](https://david-dm.org/rzr/mastodon-lite/status.svg)](https://david-dm.org/rzr/mastodon-lite)
+
 
 ## USAGE: ##
 
