@@ -15,80 +15,78 @@
  */
 
 var http = require('https');
-
-var Mastodon = function(config) {
+var console = require('console');
+var Mastodon = function (config) {
   var self = this;
   if (!(self instanceof Mastodon)) {
     return new Mastodon(config);
   }
   self.config = config;
-}
+};
 
-
-function receive(incoming, callback) {
+function receive (incoming, callback) {
   var data = '';
-  incoming.on('data', function(chunk) { data += chunk; });
-  incoming.on('end', function() { callback ? callback(data) : ''; });
+  incoming.on('data', function (chunk) { data += chunk; });
+  incoming.on('end', function () {
+    if (callback) callback(data);
+  });
 }
 
 Mastodon.prototype.post = function (message, callback) {
   var self = this;
   if (undefined === self.config) {
-    console.log("log: TODO: must provide config, attempt to use defaults: " + self.config);
-    return 1;
+    console.warning('log: TODO: must provide config, attempt to use defaults: ' + self.config);
   }
   if (undefined === message) {
-    message = "ping from #IoTJs to @TizenHelper@quitter.is";
-    console.log("log: TODO: must provide message, attempt to use default: " + message);
+    message = 'ping from #IoTJs to @TizenHelper@quitter.is';
+    console.warning('log: TODO: must provide message, attempt to use default: ' + message);
   }
 
-  message = 'status=' + message ;
+  message = 'status=' + message;
   var config = self.config;
-  config.method = "POST";
-  config.path = self.config.api + "/statuses"
+  config.method = 'POST';
+  config.path = self.config.api + '/statuses';
   config.headers = {
     'Content-Length': message.length,
-    'Authorization': "Bearer " + self.config.access_token
+    'Authorization': 'Bearer ' + self.config.access_token
   };
 
   if (undefined === callback) {
-    callback = function(data) {
-      if (true) console.log(data);
-    }
+    callback = function (data) {
+      console.log(data);
+    };
   }
-  
-  http.request(config, function(res) {
+
+  http.request(config, function (res) {
     receive(res, callback);
   }).end(message);
-}
+};
 
 Mastodon.prototype.get = function (path, callback) {
   var self = this;
   if (undefined === self.config) {
-    console.log("log: TODO: must provide config, attempt to use defaults: " + self.config);
-    return 1;
+    console.warning('log: TODO: must provide config, attempt to use defaults: ' + self.config);
   }
   if (undefined === path) {
-    path = "/timeline/home";
-    console.log("log: TODO: must provide message, attempt to use default: " + message);
+    path = '/timeline/home';
+    console.warning('log: TODO: must provide path, attempt to use default: ' + path);
   }
 
   var config = self.config;
-  config.method = "GET";
-  config.path = self.config.api + "/" + path;
+  config.method = 'GET';
+  config.path = self.config.api + '/' + path;
   config.headers = {
-    'Authorization': "Bearer " + self.config.access_token
+    'Authorization': 'Bearer ' + self.config.access_token
   };
 
   if (undefined === callback) {
-    callback = function(data) {
-      if (true) console.log(data);
-    }
+    callback = function (data) {
+      console.log(data);
+    };
   }
-  http.request(config, function(res) {
+  http.request(config, function (res) {
     receive(res, callback);
   }).end();
-}
-
+};
 
 module.exports = Mastodon;
