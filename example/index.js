@@ -14,13 +14,15 @@
  * limitations under the License.
  */
 
+var fs = require('fs');
+var console = require('console');
 var Mastodon;
 try {
   Mastodon = require('../mastodon-lite');
 } catch (err) {
   Mastodon = require('mastodon-lite');
 }
-var conf = process.env.HOME + "/.mastodon-lite.json";
+var conf = process.env.HOME + '/.mastodon-lite.json';
 
 var config = {
   access_token: '[TODO: Update with app token at https://mastodon.social/settings/applications]',
@@ -30,20 +32,15 @@ var config = {
   rejectUnauthorized: false
 };
 
-var fs = require('fs');
-var mastodon;
-
 try {
   config = JSON.parse(fs.readFileSync(conf, 'utf8'));
-  //TODO: If used as module update with "require('mastodon-lite')" 
-  mastodon = Mastodon(config);
-} catch(err)
-{
-  fs.writeFileSync(conf, JSON.stringify(config,null,2));
-  console.log("error: TODO: edit configuration file " + conf);
-  process.exit(1);
+} catch (err) {
+  fs.writeFileSync(conf, JSON.stringify(config, null, 2));
+  console.log('error: TODO: edit configuration file ' + conf);
+  process.exit(0);
 }
 
+var mastodon = Mastodon(config);
 var message;
 if (process.argv.length > 2) {
   message = process.argv[2];
