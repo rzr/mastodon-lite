@@ -1,11 +1,10 @@
 module.exports = {
     "env": {
-        "es6": true,
         "node": true
     },
     "extends": "eslint:recommended",
     "parserOptions": {
-        "ecmaVersion": 2015
+        "ecmaVersion": 5
     },
     "rules": {
         "accessor-pairs": "error",
@@ -28,7 +27,7 @@ module.exports = {
                 "allowSingleLine": true
             }
         ],
-        "callback-return": "off",
+        "callback-return": "error",
         "capitalized-comments": [
             "error",
             "always"
@@ -108,14 +107,13 @@ module.exports = {
             "error",
             "bare-block"
         ],
-        "multiline-ternary": "error",
+        "multiline-ternary": "off",
         "new-parens": "error",
         "newline-after-var": "off",
         "newline-before-return": "error",
         "newline-per-chained-call": "error",
         "no-alert": "error",
         "no-array-constructor": "error",
-        "no-async-promise-executor": "error",
         "no-await-in-loop": "error",
         "no-bitwise": "error",
         "no-buffer-constructor": "error",
@@ -146,7 +144,6 @@ module.exports = {
         "no-lonely-if": "error",
         "no-loop-func": "error",
         "no-magic-numbers": "off",
-        "no-misleading-character-class": "error",
         "no-mixed-operators": "error",
         "no-mixed-requires": "error",
         "no-multi-assign": "error",
@@ -190,8 +187,8 @@ module.exports = {
             }
         ],
         "no-tabs": "error",
-        "no-template-curly-in-string": "error",
-        "no-ternary": "error",
+        "no-template-curly-in-string": "off",
+        "no-ternary": "off",
         "no-throw-literal": "error",
         "no-trailing-spaces": "error",
         "no-undef-init": "error",
@@ -223,7 +220,10 @@ module.exports = {
             "error",
             "always"
         ],
-        "operator-linebreak": "error",
+        "operator-linebreak": [
+            "error",
+            null
+        ],
         "padded-blocks": "off",
         "padding-line-between-statements": "error",
         "prefer-arrow-callback": "off",
@@ -242,10 +242,8 @@ module.exports = {
             "single"
         ],
         "radix": "error",
-        "require-atomic-updates": "error",
         "require-await": "error",
         "require-jsdoc": "off",
-        "require-unicode-regexp": "error",
         "rest-spread-spacing": "error",
         "semi": "error",
         "semi-spacing": "error",
@@ -257,7 +255,7 @@ module.exports = {
         "sort-keys": "off",
         "sort-vars": "error",
         "space-before-blocks": "error",
-        "space-before-function-paren": "error",
+        "space-before-function-paren": "off",
         "space-in-parens": [
             "error",
             "never"
