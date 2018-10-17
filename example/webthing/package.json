@@ -1,0 +1,29 @@
+{
+  "name": "mastodon-lite-webthing",
+  "version": "0.0.4",
+  "description": "Mastodon WebOfThing Actuator example",
+  "main": "index.js",
+  "scripts": {
+    "start": "NODE_PATH=.:../.. node index"
+  },
+  "author": "Philippe Coval <philippe.coval@osg.samsung.com>",
+  "license": "Apache-2.0",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rzr/mastodon-lite.git"
+  },
+  "keywords": [
+    "mastodon",
+    "microblogging",
+    "client",
+    "iotjs-supported",
+    "webthing",
+    "wot"
+  ],"bugs": {
+    "url": "https://github.com/rzr/mastodon-lite/issues"
+  },
+  "homepage": "https://github.com/rzr/mastodon-lite",
+  "dependencies": {
+    "webthing": "^0.8.1"
+  }
+}
