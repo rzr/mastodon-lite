@@ -1,3 +1,7 @@
 *~
 *.tmp
-/tnp/
+/tmp/
+npm-debug.log
+**/node_modules/
+**/iotjs_modules/
+**/.mastodon-lite*.json
