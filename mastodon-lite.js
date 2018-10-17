@@ -16,7 +16,7 @@
 
 var http = require('https');
 var console = require('console');
-var Mastodon = function (config) {
+var Mastodon = function(config) {
   var self = this;
   if (!(self instanceof Mastodon)) {
     return new Mastodon(config);
@@ -28,16 +28,16 @@ function receive (incoming, callback) {
   var data = '';
   incoming.on('data', function (chunk) { data += chunk; });
   incoming.on('end', function () {
-    if (callback) callback(data);
+    if (callback) return callback(data);
   });
 }
 
 Mastodon.prototype.post = function (message, callback) {
   var self = this;
-  if (undefined === self.config) {
+  if (!self.config) {
     console.warning('log: TODO: must provide config, attempt to use defaults: ' + self.config);
   }
-  if (undefined === message) {
+  if (!message) {
     message = 'ping from #IoTJs to @TizenHelper@quitter.is';
     console.warning('log: TODO: must provide message, attempt to use default: ' + message);
   }
@@ -47,8 +47,8 @@ Mastodon.prototype.post = function (message, callback) {
   config.method = 'POST';
   config.path = self.config.api + '/statuses';
   config.headers = {
-    'Content-Length': message.length,
-    'Authorization': 'Bearer ' + self.config.access_token
+    'Authorization': 'Bearer ' + self.config.access_token,
+    'Content-Length': message.length
   };
 
   if (undefined === callback) {
