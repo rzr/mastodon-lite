@@ -24,7 +24,11 @@ var WebThingServer = webthing.WebThingServer;
 
 var fs = require('fs');
 var Mastodon = require('mastodon-lite');
+
+// TODO: Workaround TizenRT issue
+process.env.HOME || (process.env.HOME = process.env.IOTJS_PATH);
 var conf = process.env.HOME + '/.mastodon-lite.json';
+console.log('log: Loading private file: ' + conf);
 var config = JSON.parse(fs.readFileSync(conf, 'utf8'));
 var mastodon = Mastodon(config);
 
