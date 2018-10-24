@@ -33,10 +33,11 @@ var config = JSON.parse(fs.readFileSync(conf, 'utf8'));
 var mastodon = Mastodon(config);
 
 function main () {
+  var self = this;
   var port = process.argv[2] ? Number(process.argv[2]) : 8888;
   var message = process.argv[3] ? String(process.argv[3])
       : 'https://www.npmjs.com/package/mastodon-lite# Hello world! from #MastodonLite';
-  var url = 'http://localhost:' + port + '/properties/string';
+  var url = 'http://localhost:' + port + '/properties/message';
 
   console.log('Usage:\n' +
               process.argv[0] + ' ' + process.argv[1] + ' [port]\n' +
@@ -49,8 +50,11 @@ function main () {
     thing,
     'message',
     new Value(message, function (value) {
-      console.log(String(value));
-      mastodon.post(String(value));
+      if (self.message !== String(value)) {
+        self.message = String(value);
+        console.log(self.message);
+        mastodon.post(String(value));
+      }
     }),
     {
       label: 'Message',
