@@ -46,20 +46,20 @@ function main () {
   var thing = new Thing('MastodonMultiLevel', 'multiLevelSwitch', 'An actuator example that just blog');
 
   thing.addProperty(new Property(
-thing,
-                 'level',
-                 new Value(0, function (value) {
-                   var regex = /\$\{level\}/gi;
-                   message = message.replace(regex, value);
-                   console.log(message);
-                   mastodon.post(message);
-                 }),
-                 {
-                   label: 'Level',
-                   type: 'number',
-                   description: 'Whether the output is changed'
-                 }
-));
+    thing,
+    'level',
+    new Value(0, function (value) {
+      var regex = /\$\{level\}/gi;
+      message = message.replace(regex, value);
+      console.log(message);
+      mastodon.post(message);
+    }),
+    {
+      label: 'Level',
+      type: 'number',
+      description: 'Whether the output is changed'
+    }
+  ));
 
   var server = new WebThingServer(new SingleThing(thing), port);
   process.on('SIGINT', function () {
