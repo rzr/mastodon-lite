@@ -35,29 +35,27 @@ var mastodon = Mastodon(config);
 function main () {
   var port = process.argv[2] ? Number(process.argv[2]) : 8888;
   var message = process.argv[3] ? String(process.argv[3])
-      : 'https://www.npmjs.com/package/mastodon-lite# Level of #MastodonLite #WebThing is ${level} ( from @rzr@social.SamsungInter.net )';
-  var url = 'http://localhost:' + port + '/properties/level';
+      : 'https://www.npmjs.com/package/mastodon-lite# Hello world! from #MastodonLite';
+  var url = 'http://localhost:' + port + '/properties/string';
 
   console.log('Usage:\n' +
               process.argv[0] + ' ' + process.argv[1] + ' [port]\n' +
-              'Try:\ncurl -H "Content-Type: application/json" -X PUT --data \'{"level": 42}\' ' +
-              url + '\n');
+              'Try:\ncurl -H "Content-Type: application/json" -X PUT --data \'{"message": "'
+              + message  + '"} \' ' +  url + '\n');
 
-  var thing = new Thing('MastodonMultiLevel', 'multiLevelSwitch', 'An actuator example that just blog');
+  var thing = new Thing('MastodonActuator', ['String'], 'An actuator example that just blog');
 
   thing.addProperty(new Property(
     thing,
-    'level',
-    new Value(0, function (value) {
-      var regex = /\$\{level\}/gi;
-      message = message.replace(regex, value);
-      console.log(message);
-      mastodon.post(message);
+    'message',
+    new Value(message, function (value) {
+      console.log(String(value));
+      mastodon.post(String(value));
     }),
     {
-      label: 'Level',
-      type: 'number',
-      description: 'Whether the output is changed'
+      label: 'Message',
+      type: 'string',
+      description: 'Message to be sent on change'
     }
   ));
 
