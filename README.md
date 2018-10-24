@@ -164,7 +164,12 @@ and client will get server's answer in this form:
 
 [![web-of-things-agriculture-20180712rzr.webm](https://s-opensource.org/wp-content/uploads/2018/07/web-of-things-agriculture-20180712rzr.gif)](https://player.vimeo.com/video/279677314#web-of-things-agriculture-20180712rzr.webm "Video Demo")
 
-Check example/webthing for more.
+This "Smart Orchid" demonstrate how to link IoT to social web, using WebOfThings and ActivityPub,
+with Mozilla Thing project, check this wiki page from webthing-iotjs project:
+
+* https://github.com/rzr/webthing-iotjs/wiki/Social
+
+For code check [example/webthing](example/webthing) in this mastodon-lite project.
 
 
 #### INTEGRATE ####
