@@ -13,10 +13,14 @@
     "url": "git+https://github.com/rzr/mastodon-lite.git"
   },
   "keywords": [
+    "activitypub",
     "mastodon",
     "microblogging",
     "client",
-    "iotjs-supported"
+    "iotjs-module",
+    "social",
+    "webthing",
+    "WoT"
   ],
   "bugs": {
     "url": "https://github.com/rzr/mastodon-lite/issues"
