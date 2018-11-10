@@ -1,11 +1,15 @@
 # MASTODON-LITE #
 
 [![GitHub forks](https://img.shields.io/github/forks/rzr/mastodon-lite.svg?style=social&label=Fork&maxAge=2592000)](https://GitHub.com/rzr/mastodon-lite/network/)
-[![License](https://img.shields.io/badge/licence-Apache%202.0-brightgreen.svg?style=flat)](LICENSE)
+[![License](https://img.shields.io/badge/licence-Apache-2.0-brightgreen.svg?style=flat)](LICENSE)
 [![NPM](https://img.shields.io/npm/v/mastodon-lite.svg)](https://www.npmjs.com/package/mastodon-lite)
 [![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2Frzr%2Fmastodon-lite.svg?type=shield)](https://app.fossa.io/projects/git%2Bgithub.com%2Frzr%2Fmastodon-lite?ref=badge_shield)
 [![dependencies Status](https://david-dm.org/rzr/mastodon-lite/status.svg)](https://david-dm.org/rzr/mastodon-lite)
 
+[![NPM](https://nodei.co/npm/mastodon-lite.png)](https://npmjs.org/package/mastodon-lite)
+
+
+## INTRODUCTION: ##
 
 Lightweight client for mastodon micro blogging service.
 
@@ -13,6 +17,8 @@ This implementation is focusing on reducing dependencies,
 for supporting IoT.js runtime, (as well as node).
 
 So far only 'https' module is used (and 'fs' for the example app)
+
+[![Presentation](https://image.slidesharecdn.com/webthing-iotjs-20181022rzr-181027220201/95/webthingiotjs20181022rzr-25-638.jpg)](https://www.slideshare.net/slideshow/embed_code/key/BGdKOn9HHRF4Oa#webthing-iotjs# "WebThingIotJs")
 
 
 ## USAGE: ##
@@ -203,12 +209,20 @@ IOTJS_EXTRA_MODULE_PATH=./node_modules/ iotjs node_modules/mastodon-lite/example
 Alternatively gitmodule can be used to track master branch.
 
 
+### USING TIZENRT ON ARTIK05X ###
+
+Rebuild demo from this makefile:
+
+* https://github.com/rzr/TizenRT/tree/master/rules/mastodon-lite
+
+
 ## RESOURCES: ##
 
 * https://github.com/rzr/mastodon-lite
 * https://www.npmjs.com/package/mastodon-lite
 * http://iotjs.net
 * https://w3c.github.io/activitypub/
+* https://github.com/rzr/webthing-iotjs/wiki/Social
 
 
 ## LICENSE: ##
