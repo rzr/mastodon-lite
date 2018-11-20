@@ -26,7 +26,9 @@ var fs = require('fs');
 var Mastodon = require('mastodon-lite');
 
 // TODO: Workaround TizenRT issue
-process.env.HOME || (process.env.HOME = process.env.IOTJS_PATH);
+if (!process.env.HOME) {
+  process.env.HOME = process.env.IOTJS_PATH;
+}
 var conf = process.env.HOME + '/.mastodon-lite.json';
 console.log('log: Loading private file: ' + conf);
 var config = JSON.parse(fs.readFileSync(conf, 'utf8'));
@@ -41,8 +43,8 @@ function main () {
 
   console.log('Usage:\n' +
               process.argv[0] + ' ' + process.argv[1] + ' [port]\n' +
-              'Try:\ncurl -H "Content-Type: application/json" -X PUT --data \'{"message": "'
-              + message  + '"} \' ' +  url + '\n');
+              'Try:\ncurl -H "Content-Type: application/json" -X PUT --data \'{"message": "' +
+              message + '"} \' ' + url + '\n');
 
   var thing = new Thing('MastodonActuator', ['String'], 'An actuator example that just blog');
 
