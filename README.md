@@ -1,7 +1,7 @@
 # MASTODON-LITE #
 
 [![GitHub forks](https://img.shields.io/github/forks/rzr/mastodon-lite.svg?style=social&label=Fork&maxAge=2592000)](https://GitHub.com/rzr/mastodon-lite/network/)
-[![License](https://img.shields.io/badge/licence-Apache-2.0-brightgreen.svg?style=flat)](LICENSE)
+[![License](https://img.shields.io/badge/licence-Apache-2.0.svg?style=flat)](LICENSE)
 [![NPM](https://img.shields.io/npm/v/mastodon-lite.svg)](https://www.npmjs.com/package/mastodon-lite)
 [![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2Frzr%2Fmastodon-lite.svg?type=shield)](https://app.fossa.io/projects/git%2Bgithub.com%2Frzr%2Fmastodon-lite?ref=badge_shield)
 [![dependencies Status](https://david-dm.org/rzr/mastodon-lite/status.svg)](https://david-dm.org/rzr/mastodon-lite)
