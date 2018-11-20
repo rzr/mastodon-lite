@@ -9,7 +9,7 @@ iotjs_modules/webthing/%: iotjs_modules/webthing
 	@ls $@
 
 iotjs/run: index.js iotjs_modules/webthing/index.js
-	IOTJS_EXTRA_MODULE_PATH=../..:iotjs_modules iotjs $<
+	IOTJS_EXTRA_MODULE_PATH=../.. iotjs $<
 
 iotjs/debug:
 	rm -rf node_modules
