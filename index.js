@@ -14,6 +14,4 @@
  * limitations under the License.
  */
 
-'use strict';
-
 module.exports = require('./mastodon-lite.js');
