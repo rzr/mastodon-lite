@@ -1,0 +1,76 @@
+{
+  "name": "activitypub-adapter",
+  "display_name": "ActivityPub",
+  "version": "0.0.8",
+  "description": "ActivityPub/Mastodon adapter for Mozilla IoT Gateway",
+  "author": "Philippe Coval",
+  "main": "index.js",
+  "keywords": [
+    "mozilla",
+    "iot",
+    "adapter"
+  ],
+  "license": "MPL-2.0",
+  "homepage": "https://github.com/rzr/mastodon-lite",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/rzr/mastodon-lite.git"
+  },
+  "bugs": {
+    "url": "https://github.com/rzr/mastodon-lite/issues"
+  },
+  "files": [
+    "LICENSE",
+    "SHA256SUMS",
+    "activitypub-adapter.js",
+    "index.js",
+    "node_modules"
+  ],
+  "dependencies": {
+    "mastodon-lite": "*"
+  },
+  "bundledDependencies": [
+    "mastodon-lite"
+  ],
+  "moziot": {
+    "api": {
+      "min": 2,
+      "max": 2
+    },
+    "plugin": true,
+    "exec": "{nodeLoader} {path}",
+    "config": {
+      "access_token": "TODO: replace with token from ${instance}/settings/applications",
+      "hostname": "mastodon.social",
+      "port": 443,
+      "api": "/api/v1",
+      "rejectUnauthorized": false
+    },
+    "schema": {
+      "type": "object",
+      "description": "Configuration of ActivityPub account",
+      "properties": {
+        "access_token": {
+          "type": "string",
+          "description": "App token to user server API (private)"
+        },
+        "hostname": {
+          "type": "string",
+          "description": "hostname of ActivityPub server (eg: mastodon.social)"
+        },
+        "port": {
+          "type": "number",
+          "description": "instance's port (eg: 443)"
+        },
+        "api": {
+          "type": "string",
+          "description": "API of instance (eg: /api/v1)"
+        },
+        "rejectUnauthorized": {
+          "type": "boolean",
+          "description": "Reject if not verified by Cerfificate Authority (eg: false)"
+        }
+      }
+    }
+  }
+}
