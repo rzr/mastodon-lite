@@ -6,8 +6,6 @@
  * Copyright 2018-present Samsung Electronics Co., Ltd. and other contributors
  */
 
-'use strict';
-
 const Mastodon = require('mastodon-lite');
 
 const {
