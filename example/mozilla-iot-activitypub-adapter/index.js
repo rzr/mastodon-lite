@@ -6,8 +6,6 @@
  * Copyright 2018-present Samsung Electronics Co., Ltd. and other contributors
  */
 
-'use strict';
-
 function maybeLoadActivityPubAdapter(addonManager, manifest, errorCallback) {
   const loadActivityPubAdapter = require('./activitypub-adapter');
   return loadActivityPubAdapter(addonManager, manifest, errorCallback);
