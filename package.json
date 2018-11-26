@@ -26,7 +26,7 @@
     "url": "https://github.com/rzr/mastodon-lite/issues"
   },
   "bin": {
-    "mastodon-lite": "./main.js"
+    "mastodon-lite": "./example/index.js"
   },
   "homepage": "https://github.com/rzr/mastodon-lite",
   "devDependencies": {
