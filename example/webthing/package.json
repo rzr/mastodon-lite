@@ -1,6 +1,6 @@
 {
   "name": "mastodon-lite-webthing",
-  "version": "0.0.4",
+  "version": "0.0.8",
   "description": "Mastodon WebOfThing Actuator example",
   "main": "index.js",
   "scripts": {
@@ -19,11 +19,12 @@
     "iotjs-supported",
     "webthing",
     "wot"
-  ],"bugs": {
+  ],
+  "bugs": {
     "url": "https://github.com/rzr/mastodon-lite/issues"
   },
   "homepage": "https://github.com/rzr/mastodon-lite",
   "dependencies": {
-    "webthing": "^0.8.1"
+    "webthing-iotjs": "^0.9.0"
   }
 }
