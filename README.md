@@ -38,22 +38,31 @@ Then user need to create an account on decentralized, mastodon social network (o
 While we're here, let's go to settings to create an application and generate it's secret token, that will be used later:
 
 Once logged go to "Settings" / "Development" / "New Application" ie:
+
 * https://mastodon.social/settings/applications/new
 
 Then just set application name to "mastodon-lite" or any name of your choice, other fields can be skipped.
+
+
+Then your "mastodon-lite" application should appear on:
+
+* https://mastodon.social/settings/applications
+
+Click on it and note down the "access token" (64char hexa string)
 
 
 #### CONFIGURE: ####
 
 On first run, if not already present, configuration file will generated in ~/.mastodon-lite.js.
 
-```
-cd ../mastodon-lite
+```sh
+git clone https://github.com/rzr/mastodon-lite ; cd mastodon-lite
 node example
-error: TODO: edit configuration file ~/.mastodon-lite.json
+# error: TODO: edit configuration file ~/.mastodon-lite.json
+cat ~/.mastodon-lite.json
 ```
 
-Then update credentials in template file with "Your access token" in earlier step,
+Then update credentials in generated config file with "Your access token" in earlier step,
 if running on different instance, host and port should be changed accordingly,
 
 
@@ -90,7 +99,7 @@ To post a message, just add a quoted message as parameter:
 node example 'https://www.npmjs.com/package/mastodon-lite# #MastodonLite : A lightweight #Mastodon client to support #ConstraintedDevices using #IotJs cc: @TizenHelper@quitter.is '
 ```
 
-Message (toot) should be displayed on your profile's page (ie: https://mastodon.social/@tizenhelper/99568473401250711 )
+Message (toot) should be displayed on your profile's page (eg: https://mastodon.social/@tizenhelper/99568473401250711 )
 and client will get server's answer in this form:
 
 ```
@@ -165,41 +174,29 @@ and client will get server's answer in this form:
 }
 ```
 
-
-### DEMO: ###
-
-[![web-of-things-agriculture-20180712rzr.webm](https://s-opensource.org/wp-content/uploads/2018/07/web-of-things-agriculture-20180712rzr.gif)](https://player.vimeo.com/video/279677314#web-of-things-agriculture-20180712rzr.webm "Video Demo")
-
-This "Smart Orchid" demonstrate how to link IoT to social web, using WebOfThings and ActivityPub,
-with Mozilla Thing project, check this wiki page from webthing-iotjs project:
-
-* https://github.com/rzr/webthing-iotjs/wiki/Social
-
-For code check [example/webthing](example/webthing) in this mastodon-lite project.
-
-
 #### INTEGRATE ####
 
 Module is in NPM repo, so it can be added using npm tool:
 
-```
+```sh
 ls package.json || npm init
 npm install mastodon-lite
 NODE_PATH=node_modules node node_modules/mastodon-lite/example
 ```
 
-
 ### USING IOTJS: ###
 
-It's very similar to nodejs, just the PATH environment variable is changed:
+It's very similar to nodejs,
 
-```
+```sh
+git clone https://github.com/rzr/mastodon-lite ; cd mastodon-lite
 iotjs example
 ```
 
-Code can be imported using node npm package manager tool:
+Note, if you don't want to use git, code can be imported using node's npm package manager tool.
+just update PATH variable.
 
-```
+```sh
 ls package.json || npm init
 npm install mastodon-lite
 IOTJS_EXTRA_MODULE_PATH=./node_modules/ iotjs node_modules/mastodon-lite/example
@@ -216,13 +213,31 @@ Rebuild demo from this makefile:
 * https://github.com/rzr/TizenRT/tree/master/rules/mastodon-lite
 
 
+## DEMO: ##
+
+[![web-of-things-agriculture-20180712rzr.webm](https://s-opensource.org/wp-content/uploads/2018/07/web-of-things-agriculture-20180712rzr.gif)](https://player.vimeo.com/video/279677314#web-of-things-agriculture-20180712rzr.webm "Video Demo")
+
+This "Smart Orchid" demonstrate how to link IoT to social web, using WebOfThings and ActivityPub,
+with Mozilla Thing project, check this wiki page from webthing-iotjs project:
+
+* https://github.com/rzr/webthing-iotjs/wiki/Social
+
+For code check [example/webthing](example/webthing) in this mastodon-lite project.
+
+An other integration example is add on adapter for mozilla-iot's Gateway:
+[example/mozilla-iot-activitypub-adapter](example/mozilla-iot-activitypub-adapter):
+
+More details are explained on this Wiki page:
+
+* https://github.com/rzr/webthing-iotjs/wiki/Social
+
+
 ## RESOURCES: ##
 
 * https://github.com/rzr/mastodon-lite
 * https://www.npmjs.com/package/mastodon-lite
 * http://iotjs.net
 * https://w3c.github.io/activitypub/
-* https://github.com/rzr/webthing-iotjs/wiki/Social
 * https://mastodon.social/@tizenhelper/101092551900857924
 * https://www.slideshare.net/rzrfreefr/webthingiotjs20181022rzr-120959360
 
