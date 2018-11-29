@@ -22,3 +22,12 @@
 
 run: iotjs/run
 	@echo "# log: $@: $^"
+
+clean:
+	rm -rf *~
+
+cleanall: clean
+	rm -rf node_modules iotjs_modules
+
+distclean: cleanall
+	rm -rf tmp
