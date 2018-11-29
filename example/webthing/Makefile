@@ -1,3 +1,9 @@
+#!/bin/make -f
+# -*- makefile -*-
+# SPDX-License-Identifier: Apache-2.0
+# Copyright: 2018-present Samsung Electronics France SAS, and contributors
+
+
 base_url?=http://localhost:8888
 webthing_url?=https://github.com/rzr/webthing-iotjs
 
@@ -34,3 +40,6 @@ node/run: node_modules
 
 run: iotjs/run
 	@echo "# $@: $^"
+
+cleanall:
+	rm -rf iotjs_modules node_modules
