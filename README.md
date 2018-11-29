@@ -223,6 +223,8 @@ Rebuild demo from this makefile:
 * http://iotjs.net
 * https://w3c.github.io/activitypub/
 * https://github.com/rzr/webthing-iotjs/wiki/Social
+* https://mastodon.social/@tizenhelper/101092551900857924
+* https://www.slideshare.net/rzrfreefr/webthingiotjs20181022rzr-120959360
 
 
 ## LICENSE: ##
