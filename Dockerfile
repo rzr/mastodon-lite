@@ -78,7 +78,7 @@ RUN echo "#log: ${project}: Preparing sources" \
 WORKDIR /usr/local/${project}/${project}
 RUN echo "#log: ${project}: Testing sources" \
   && set -x \
-  && ls .mastodon-lite.json || echo "ERROR: please config file" \
+  && ls .mastodon-lite.json || echo "ERROR: please add config file to run actual test" \
   && ls .mastodon-lite.json && echo "WARNING: Don't publish image" \
   && cp -v .mastodon-lite.json ${HOME} || echo "Using default config" \
   && make test \
