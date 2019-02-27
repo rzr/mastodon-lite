@@ -22,6 +22,7 @@
 
 run: iotjs/run
 	@echo "# log: $@: $^"
+test: run
 
 clean:
 	rm -rf *~
@@ -31,3 +32,13 @@ cleanall: clean
 
 distclean: cleanall
 	rm -rf tmp
+
+rule/npm/version/%: package.json
+	-git describe --tags
+	cd example/webthing && npm version ${@F}
+	-git add example/webthing/package*.json
+	cd example/mozilla-iot-activitypub-adapter && npm version ${@F}
+	-git add example/*/package*.json
+	-git commit -sam "webthing: Update version to ${@F}"
+	-git add package*.json
+	npm version ${@F}
