@@ -17,8 +17,8 @@
 version: "2"
 
 services:
-  web:
+  default:
     build: .
-    command: /usr/local/mastodon-lite/mastodon-lite/run.sh
+    command: test
     volumes:
       - /usr/local/mastodon-lite/mastodon-lite/
