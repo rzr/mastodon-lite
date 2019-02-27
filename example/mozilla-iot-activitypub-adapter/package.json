@@ -3,7 +3,7 @@
   "display_name": "ActivityPub",
   "version": "0.0.8",
   "description": "ActivityPub/Mastodon adapter for Mozilla IoT Gateway",
-  "author": "Philippe Coval",
+  "author": "Philippe Coval <p.coval@samsung.com> (https://www.npmjs.com/~rzr)",
   "main": "index.js",
   "keywords": [
     "mozilla",
