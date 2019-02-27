@@ -1,6 +1,15 @@
+sudo: required
 language: node_js
+dist: trusty
+
 node_js:
-- node
+  - "8"
+
+services:
+  docker
+
+script:
+  - docker build .
 deploy:
   provider: npm
   email: rzr@users.sf.net
