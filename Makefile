@@ -17,12 +17,28 @@
 # limitations under the License.
 #}
 
+default: build
+
+
+runtime?=iotjs
+srcs?=mastodon-lite.js
+V?=1
+
+
 %/run: example/index.js
 	${@D} $<
 
-run: iotjs/run
+%/check: ${srcs}
+	${@D} $<
+
+run: ${runtime}/run
 	@echo "# log: $@: $^"
-test: run
+
+check: ${runtime}/check
+	@echo "# log: $@: $^"
+
+test: check run
+	@echo "# log: $@: $^"
 
 clean:
 	rm -rf *~
@@ -32,6 +48,10 @@ cleanall: clean
 
 distclean: cleanall
 	rm -rf tmp
+
+setup:
+	@echo "log: Expected iotjs help to be printed"
+	${runtime} -h ||:
 
 rule/npm/version/%: package.json
 	-git describe --tags
