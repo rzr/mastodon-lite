@@ -109,8 +109,12 @@ class ActivityPubAdapter extends Adapter {
   }
 }
 
-function loadActivityPubAdapter(addonManager, manifest, _errorCallback) {
-  new ActivityPubAdapter(addonManager, manifest);
+function loadActivityPubAdapter(addonManager, manifest, errorCallback) {
+  try {
+    new ActivityPubAdapter(addonManager, manifest);
+  } catch (err) {
+    errorCallback(manifest.name, `error: Failed to construct${err}`);
+  }
 }
 
 module.exports = loadActivityPubAdapter;
