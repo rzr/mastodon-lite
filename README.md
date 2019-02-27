@@ -5,6 +5,7 @@
 [![NPM](https://img.shields.io/npm/v/mastodon-lite.svg)](https://www.npmjs.com/package/mastodon-lite)
 [![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2Frzr%2Fmastodon-lite.svg?type=shield)](https://app.fossa.io/projects/git%2Bgithub.com%2Frzr%2Fmastodon-lite?ref=badge_shield)
 [![dependencies Status](https://david-dm.org/rzr/mastodon-lite/status.svg)](https://david-dm.org/rzr/mastodon-lite)
+[![Build Status](https://api.travis-ci.org/rzr/mastodon-lite.svg?branch=master)](https://travis-ci.org/rzr/mastodon-lite)
 
 [![NPM](https://nodei.co/npm/mastodon-lite.png)](https://npmjs.org/package/mastodon-lite)
 
