@@ -4,9 +4,10 @@
   "description": "Lightweight Mastodon micro blogging client module supporting IoT.js runtime",
   "main": "index.js",
   "scripts": {
+    "lint": "eslint .",
     "test": "NODE_PATH=. eslint . && node example"
   },
-  "author": "Philippe Coval <philippe.coval@osg.samsung.com>",
+  "author": "Philippe Coval <p.coval@samsung.com> (https://www.npmjs.com/~rzr)",
   "license": "Apache-2.0",
   "repository": {
     "type": "git",
