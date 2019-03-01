@@ -40,11 +40,51 @@ try {
   process.exit(0);
 }
 
-var mastodon = Mastodon(config);
-var message;
-if (process.argv.length > 2) {
-  message = process.argv[2];
-  mastodon.post(message);
-} else {
-  mastodon.get('timelines/home');
+module.exports = function(argv, callback) {
+  var mastodon = Mastodon(config);
+  var verb = 'get';
+  var token = null;
+  var idx = 2;
+
+  if (argv.length > idx && (token = argv[idx])) {
+    if (token === 'get' || token === 'post' ||
+        token === 'put' || token === 'delete') {
+      verb = token;
+      idx += 1;
+    } else {
+      verb = 'post';
+    }
+  }
+
+  switch (verb) {
+
+  case 'post':
+    if (argv.length > idx) {
+      var message = null;
+      message = argv[idx];
+      mastodon.post(message, function(data) {
+        callback(null, data);
+      });
+    }
+    break;
+
+  case 'get':
+    var endpoint = 'timelines/home';
+    if (argv.length > idx) endpoint = argv[idx];
+    mastodon.get(endpoint, function(data) {
+      callback(null, data);
+    });
+    break;
+
+  default:
+    if (callback) return callback('Error: Must be implemented', null);
+    break;
+  }
+};
+
+
+if (module.parent === null) {
+  module.exports(process.argv, function(err, data) {
+    console.log(err, data);
+  });
 }
