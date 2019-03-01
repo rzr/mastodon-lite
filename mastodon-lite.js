@@ -24,6 +24,8 @@ var Mastodon = function(config) {
   self.config = config;
 };
 
+var verbose = !console.log || function () {};
+
 function receive (incoming, callback) {
   var data = '';
   incoming.on('data', function (chunk) { data += chunk; });
@@ -51,9 +53,9 @@ Mastodon.prototype.post = function (message, callback) {
     'Content-Length': message.length
   };
 
-  if (undefined === callback) {
+  if (!callback) {
     callback = function (data) {
-      console.log(data);
+      verbose(data);
     };
   }
 
@@ -81,7 +83,7 @@ Mastodon.prototype.get = function (path, callback) {
 
   if (undefined === callback) {
     callback = function (data) {
-      console.log(data);
+      console.verbose(data);
     };
   }
   http.request(config, function (res) {
