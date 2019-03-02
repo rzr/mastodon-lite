@@ -5,6 +5,8 @@
   "main": "index.js",
   "scripts": {
     "lint": "eslint .",
+    "node": "NODE_PATH=. node",
+    "start": "node example",
     "test": "NODE_PATH=. eslint . && node example"
   },
   "author": "Philippe Coval <p.coval@samsung.com> (https://www.npmjs.com/~rzr)",
