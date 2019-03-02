@@ -23,7 +23,7 @@ default: build
 runtime?=iotjs
 srcs?=mastodon-lite.js
 V?=1
-
+eslint ?= node_modules/eslint/bin/eslint.js
 
 %/run: example/index.js
 	${@D} $<
@@ -62,3 +62,16 @@ rule/npm/version/%: package.json
 	-git commit -sam "webthing: Update version to ${@F}"
 	-git add package*.json
 	npm version ${@F}
+
+${eslint}:
+	npm install --only=dev
+
+rule/eslint: .eslintrc.js ${eslint}
+	@rm -rf tmp/dist
+	${eslint} --no-color --fix . ||:
+	${eslint} --no-color .
+	git diff --exit-code
+
+lint: rule/eslint
+	@echo "# log: $@: $^"
+
