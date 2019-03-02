@@ -103,8 +103,9 @@ class ActivityPubAdapter extends Adapter {
       Boolean(manifest.moziot.config.rejectUnauthorized);
     this.mastodon = Mastodon(this.config);
 
-    for (const device in devices) {
-      new ActivityPubDevice(this, device, devices[device]);
+    for (let idx = 0; idx < devices.length; idx += 1) {
+      const id = `activitypub-${idx}`;
+      new ActivityPubDevice(this, id, devices[idx]);
     }
   }
 }
