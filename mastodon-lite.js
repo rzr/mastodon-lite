@@ -14,34 +14,44 @@
  * limitations under the License.
  */
 
-var http = require('https');
 var console = require('console');
+var http = require('https');
 var Mastodon = function(config) {
   var self = this;
   if (!(self instanceof Mastodon)) {
     return new Mastodon(config);
   }
   self.config = config;
+  self.message = 'https://github.com/rzr/webthing-iotjs/wiki/Social# #ActivityPub to build #Social #WebOfThings powered by #MastodonLite and #WebThingIotJs from @rzr@social.samsunginter.net';
 };
 
 var verbose = !console.log || function () {};
 
 function receive (incoming, callback) {
   var data = '';
-  incoming.on('data', function (chunk) { data += chunk; });
+  verbose('log: receiving:');
+  incoming.on('data', function (chunk) {
+    verbose('log: chunk: ' + data.length + '+' + chunk.length);
+    data += chunk;
+  });
+  incoming.on('close', function () {
+    verbose('log: close');
+  });
   incoming.on('end', function () {
-    if (callback) return callback(data);
+    verbose('log: end:' + data);
+    if (callback) return callback(null, data && JSON.parse(data));
   });
 }
 
 Mastodon.prototype.post = function (message, callback) {
   var self = this;
+  verbose('log: post: ' + message);
   if (!self.config) {
-    console.warning('log: TODO: must provide config, attempt to use defaults: ' + self.config);
+    console.error('log: TODO: must provide config, attempt to use defaults: ' + self.config);
   }
   if (!message) {
-    message = 'ping from #IoTJs to @TizenHelper@quitter.is';
-    console.warning('log: TODO: must provide message, attempt to use default: ' + message);
+    message = self.message;
+    verbose('log: Using default message: ' + message);
   }
 
   message = 'status=' + message;
@@ -54,7 +64,8 @@ Mastodon.prototype.post = function (message, callback) {
   };
 
   if (!callback) {
-    callback = function (data) {
+    callback = function (err, data) {
+      if (err) throw err;
       verbose(data);
     };
   }
@@ -66,12 +77,13 @@ Mastodon.prototype.post = function (message, callback) {
 
 Mastodon.prototype.get = function (path, callback) {
   var self = this;
-  if (undefined === self.config) {
-    console.warning('log: TODO: must provide config, attempt to use defaults: ' + self.config);
+  verbose('log: get: ' + path);
+  if (!self.config) {
+    console.error('log: TODO: must provide config, attempt to use defaults: ' + self.config);
   }
-  if (undefined === path) {
-    path = '/timeline/home';
-    console.warning('log: TODO: must provide path, attempt to use default: ' + path);
+  if (!path) {
+    path = '/timelines/home?limit=1';
+    verbose('log: Using default endpoint: ' + path);
   }
 
   var config = self.config;
@@ -81,14 +93,50 @@ Mastodon.prototype.get = function (path, callback) {
     'Authorization': 'Bearer ' + self.config.access_token
   };
 
-  if (undefined === callback) {
+  if (!callback) {
     callback = function (data) {
-      console.verbose(data);
+      verbose(data);
     };
   }
   http.request(config, function (res) {
     receive(res, callback);
   }).end();
+};
+
+Mastodon.prototype.request = function(argv, callback) {
+  var verb = 'get';
+  var token = null;
+  var idx = 0;
+  if (argv.length > idx && (token = argv[idx])) {
+    if (token === 'get' || token === 'post' ||
+        token === 'put' || token === 'delete') {
+      verb = token;
+      idx += 1;
+    } else {
+      verb = 'post';
+    }
+  }
+  verbose('log: verb: ' + verb);
+  switch (verb) {
+  case 'post':
+  case 'put':
+    if (argv.length > idx) {
+      this.post(argv[idx], callback);
+    }
+    break;
+
+  case 'get':
+    var endpoint = null;
+    if (argv.length > idx) {
+      endpoint = argv[idx];
+    }
+    this.get(endpoint, callback);
+    break;
+
+  default:
+    if (callback) return callback('Error: Must be implemented', null);
+    break;
+  }
 };
 
 module.exports = Mastodon;
