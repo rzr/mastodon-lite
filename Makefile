@@ -24,20 +24,25 @@ runtime?=iotjs
 srcs?=mastodon-lite.js
 V?=1
 eslint ?= node_modules/eslint/bin/eslint.js
+run_args?=
 
-%/run: example/index.js
-	${@D} $<
+
+%/start: example/index.js
+	${@D} $< "${run_args}"
 
 %/check: ${srcs}
 	${@D} $<
 
-run: ${runtime}/run
+start: ${runtime}/start
+	@echo "# log: $@: $^"
+
+run: start
 	@echo "# log: $@: $^"
 
 check: ${runtime}/check
 	@echo "# log: $@: $^"
 
-test: check run
+test: check start
 	@echo "# log: $@: $^"
 
 clean:
@@ -75,3 +80,16 @@ rule/eslint: .eslintrc.js ${eslint}
 lint: rule/eslint
 	@echo "# log: $@: $^"
 
+timelines/%:
+	npm start get "$@"
+	${runtime} example get "$@"
+
+timelines/direct:
+	npm -q start get "$@?limit=1"
+	${runtime} example get "$@?limit=1"
+
+demo: timelines/home timelines/direct
+	@echo "# log: $@: $^"
+
+iotjs/modules: ${iotjs_modules_dirs}
+	ls $<
