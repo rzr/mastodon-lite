@@ -15,6 +15,9 @@
     "type": "git",
     "url": "git+https://github.com/rzr/mastodon-lite.git"
   },
+  "iotjs": {
+    "version": ">=1.0"
+  },
   "keywords": [
     "activitypub",
     "mastodon",
