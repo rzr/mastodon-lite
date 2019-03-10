@@ -91,7 +91,7 @@ Response is a JSON stream of all posts:
 ]
 ```
 
-Different enpoints can be used, for install to retrieve private messages:
+Different enpoints can be used, for instance to retrieve private messages:
 
 ```sh
 npm run start get 'timelines/direct'
