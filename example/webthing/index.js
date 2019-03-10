@@ -15,62 +15,115 @@
  * limitations under the License.
  */
 var console = require('console');
-var webthing = require('webthing');
-var Property = webthing.Property;
-var SingleThing = webthing.SingleThing;
-var Thing = webthing.Thing;
-var Value = webthing.Value;
-var WebThingServer = webthing.WebThingServer;
+var webthing = require('webthing-iotjs');
 
 var fs = require('fs');
 var Mastodon = require('mastodon-lite');
 
-// TODO: Workaround TizenRT issue
-if (!process.env.HOME) {
-  process.env.HOME = process.env.IOTJS_PATH;
-}
-var conf = process.env.HOME + '/.mastodon-lite.json';
-console.log('log: Loading private file: ' + conf);
-var config = JSON.parse(fs.readFileSync(conf, 'utf8'));
-var mastodon = Mastodon(config);
+var verbose = !console.log || function () {};
 
-function main () {
+function MastodonActuator (mastodon) {
   var self = this;
-  var port = process.argv[2] ? Number(process.argv[2]) : 8888;
-  var message = process.argv[3] ? String(process.argv[3])
-      : 'https://www.npmjs.com/package/mastodon-lite# Hello world! from #MastodonLite';
-  var url = 'http://localhost:' + port + '/properties/message';
-
-  console.log('Usage:\n' +
-              process.argv[0] + ' ' + process.argv[1] + ' [port]\n' +
-              'Try:\ncurl -H "Content-Type: application/json" -X PUT --data \'{"message": "' +
-              message + '"} \' ' + url + '\n');
-
-  var thing = new Thing('MastodonActuator', ['String'], 'An actuator example that just blog');
-
-  thing.addProperty(new Property(
-    thing,
-    'message',
-    new Value(message, function (value) {
-      if (self.message !== String(value)) {
-        self.message = String(value);
-        console.log(self.message);
-        mastodon.post(String(value));
-      }
-    }),
+  verbose('log: actuator');
+  this.message = mastodon.message;
+  this.thing = new webthing.Thing('MastodonActuator', ['String'], 'An actuator example that just blog');
+  this.mastodon = mastodon;
+  this.value = new webthing.Value(this.message, function (value) {
+    if (self.message !== String(value)) {
+      self.message = String(value);
+      console.log(self.message);
+      self.mastodon.request(
+        ['post'].concat(value),
+        function(err, data) {
+          if (err) throw err;
+          console.log(data);
+        }
+      );
+    }
+  });
+  this.thing.addProperty(new webthing.Property(
+    this.thing, 'message', this.value,
     {
       label: 'Message',
       type: 'string',
       description: 'Message to be sent on change'
     }
   ));
-
-  var server = new WebThingServer(new SingleThing(thing), port);
-  process.on('SIGINT', function () {
-    server.stop();
-    process.exit();
-  });
-  server.start();
 }
 
-main();
+
+function MastodonSensor (mastodon, argv) {
+  var self = this;
+  verbose('log: sensor:' + mastodon);
+  this.frequency = 1 / 60;
+  this.thing = new webthing.Thing('MastodonSensor', ['String'], 'An sensor example that just listen');
+  this.mastodon = mastodon;
+  this.value = new webthing.Value(mastodon.message);
+  this.thing.addProperty(new webthing.Property(
+    this.thing,
+    'message',
+    this.value,
+    {
+      label: 'Message',
+      type: 'string',
+      description: 'Message to be sent on change'
+      // TODO readOnly: true // (should display HTML properly on GUI)
+    }
+  ));
+  this.inteval = setInterval(function() {
+    self.mastodon.request(
+      ['get'].concat(argv),
+      function(err, data) {
+        if (err) throw err;
+        var value = data && data[0] && data[0].content;
+        self.value.notifyOfExternalUpdate(value);
+      }
+    );
+  }, 1000 / this.frequency);
+}
+
+if (module.parent === null) {
+  var app = {};
+  var idx = 2;
+  // TODO: Workaround TizenRT issue
+  if (!process.env.HOME) {
+    process.env.HOME = process.env.IOTJS_PATH || '.';
+  }
+  app.conf = process.env.HOME + '/.mastodon-lite.json';
+  console.log('log: Loading private file: ' + app.conf);
+  app.config = JSON.parse(fs.readFileSync(app.conf, 'utf8'));
+  app.mastodon = Mastodon(app.config);
+
+  app.port = process.argv[idx] ? Number(process.argv[idx]) : 8888;
+  app.url = 'http://localhost:' + app.port + '/properties';
+
+  console.log('Usage:\n' +
+              process.argv[0] + ' ' +
+              process.argv[1] + ' [port]\n' +
+              'Try:\ncurl ' + app.url + '\n');
+
+  var verb = 'get';
+  idx += 1;
+  if (process.argv[idx]) {
+    verb = process.argv[idx];
+  }
+
+  switch (verb) {
+  case 'put':
+    idx += 1;
+    app.device = new MastodonActuator(app.mastodon, process.argv.slice(idx));
+    break;
+  case 'get':
+  default:
+    idx += 1;
+    app.device = new MastodonSensor(app.mastodon, process.argv.slice(idx));
+    break;
+  }
+
+  app.server = new webthing.WebThingServer(new webthing.SingleThing(app.device.thing), app.port);
+  process.on('SIGINT', function () {
+    app.server.stop();
+    process.exit();
+  });
+  app.server.start();
+}
