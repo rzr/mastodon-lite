@@ -78,7 +78,7 @@ class ActivityPubDevice extends Device {
     for (const prop of config.properties) {
       this.properties.set(
         prop.name, new ActivityPubProperty(this, prop.name, prop.metadata,
-                                           '#IgnoreThis'));
+          adapter.mastodon.message));
     }
 
     this.adapter.handleDeviceAdded(this);
