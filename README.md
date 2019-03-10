@@ -58,7 +58,7 @@ On first run, if not already present, configuration file will generated in ~/.ma
 
 ```sh
 git clone https://github.com/rzr/mastodon-lite ; cd mastodon-lite
-node example
+node start
 # error: TODO: edit configuration file ~/.mastodon-lite.json
 cat ~/.mastodon-lite.json
 ```
@@ -72,7 +72,7 @@ if running on different instance, host and port should be changed accordingly,
 By default timeline will be displayed:
 
 ```
-node example
+node start
 ```
 
 Response is a JSON stream of all posts:
@@ -94,7 +94,7 @@ Response is a JSON stream of all posts:
 Different enpoints can be used, for install to retrieve private messages:
 
 ```sh
-npm run example get 'timelines/direct'
+npm run start get 'timelines/direct'
 ```
 
 
@@ -103,7 +103,7 @@ npm run example get 'timelines/direct'
 To post a message, just add a quoted message as parameter:
 
 ```
-node example 'https://www.npmjs.com/package/mastodon-lite# #MastodonLite : A lightweight #Mastodon client to support #ConstraintedDevices using #IotJs cc: @TizenHelper@quitter.is '
+node start 'https://www.npmjs.com/package/mastodon-lite# #MastodonLite : A lightweight #Mastodon client to support #ConstraintedDevices using #IotJs cc: @TizenHelper@quitter.is '
 ```
 
 Message (toot) should be displayed on your profile's page (eg: https://mastodon.social/@tizenhelper/99568473401250711 )
@@ -197,6 +197,7 @@ It's very similar to nodejs,
 
 ```sh
 git clone https://github.com/rzr/mastodon-lite ; cd mastodon-lite
+make start
 iotjs example
 ```
 
@@ -249,6 +250,7 @@ More details are explained on this Wiki page:
 * https://github.com/tootsuite/documentation/blob/master/Using-the-API/API.md#timelines
 * https://mastodon.social/@tizenhelper/101092551900857924
 * https://www.slideshare.net/rzrfreefr/webthingiotjs20181022rzr-120959360
+* https://mastodon.social/about/more
 
 
 ## LICENSE: ##
