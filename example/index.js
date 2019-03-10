@@ -22,69 +22,28 @@ try {
 } catch (err) {
   Mastodon = require('mastodon-lite');
 }
-var conf = process.env.HOME + '/.mastodon-lite.json';
-
-var config = {
-  access_token: '[TODO: Update with app token at https://mastodon.social/settings/applications]',
-  host: 'mastodon.social',
-  port: 443,
-  api: '/api/v1',
-  rejectUnauthorized: false
-};
-
-try {
-  config = JSON.parse(fs.readFileSync(conf, 'utf8'));
-} catch (err) {
-  fs.writeFileSync(conf, JSON.stringify(config, null, 2));
-  console.log('error: TODO: edit configuration file ' + conf);
-  process.exit(0);
-}
-
-module.exports = function(argv, callback) {
-  var mastodon = Mastodon(config);
-  var verb = 'get';
-  var token = null;
-  var idx = 2;
-
-  if (argv.length > idx && (token = argv[idx])) {
-    if (token === 'get' || token === 'post' ||
-        token === 'put' || token === 'delete') {
-      verb = token;
-      idx += 1;
-    } else {
-      verb = 'post';
-    }
-  }
-
-  switch (verb) {
-
-  case 'post':
-    if (argv.length > idx) {
-      var message = null;
-      message = argv[idx];
-      mastodon.post(message, function(data) {
-        callback(null, data);
-      });
-    }
-    break;
-
-  case 'get':
-    var endpoint = 'timelines/home';
-    if (argv.length > idx) endpoint = argv[idx];
-    mastodon.get(endpoint, function(data) {
-      callback(null, data);
-    });
-    break;
-
-  default:
-    if (callback) return callback('Error: Must be implemented', null);
-    break;
-  }
-};
-
 
 if (module.parent === null) {
-  module.exports(process.argv, function(err, data) {
-    console.log(err, data);
+  var app = {};
+  app.file = process.env.HOME + '/.mastodon-lite.json';
+  app.config = {
+    access_token: '[TODO: Update with app token at https://mastodon.social/settings/applications]',
+    host: 'mastodon.social',
+    port: 443,
+    api: '/api/v1',
+    rejectUnauthorized: false
+  };
+
+  try {
+    app.config = JSON.parse(fs.readFileSync(app.file, 'utf8'));
+  } catch (err) {
+    fs.writeFileSync(app.file, JSON.stringify(app.config, null, 2));
+    console.log('error: TODO: edit configuration file ' + app.file);
+    process.exit(0);
+  }
+  app.mastodon = new Mastodon(app.config);
+  app.mastodon.request(process.argv.slice(2), function(err, data) {
+    if (err) throw err;
+    console.log(data && JSON.stringify(data, 2));
   });
 }
