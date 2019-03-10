@@ -46,13 +46,18 @@ class ActivityPubProperty extends Property {
   }
 
   setValue(value) {
+    const that = this;
     const changed = this.value !== value;
     return new Promise((resolve, reject) => {
       super.setValue(value).then((updatedValue) => {
         resolve(updatedValue);
         if (changed) {
-          this.device.adapter.mastodon.post(updatedValue);
-          this.device.notifyPropertyChanged(this);
+          that.device.adapter.mastodon.post(updatedValue, (err, data) => {
+            if (err || !data) {
+              throw (err);
+            }
+          });
+          that.device.notifyPropertyChanged(this);
         }
       }).catch((err) => {
         reject(err);
