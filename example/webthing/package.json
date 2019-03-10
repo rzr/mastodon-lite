@@ -26,6 +26,6 @@
   "homepage": "https://github.com/rzr/mastodon-lite",
   "dependencies": {
     "mastodon-lite": "*",
-    "webthing-iotjs": "^0.10.0"
+    "webthing-iotjs": "^0.11.0"
   }
 }
