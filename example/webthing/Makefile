@@ -10,16 +10,19 @@ export IOTJS_EXTRA_MODULE_PATH
 
 port?=8888
 base_url?=http://localhost:${port}
-webthing_url?=https://github.com/rzr/webthing-iotjs
+
 runtime?=iotjs
-
 iotjs_modules_dir?=${CURDIR}/iotjs_modules
-iotjs_modules_dirs?=${iotjs_modules_dir}/webthing-iotjs
+
+webthing-iotjs_url?=https://github.com/rzr/webthing-iotjs
+webthing-iotjs_revision?=webthing-iotjs-0.11.0
+webthing-iotjs_dir?=${iotjs_modules_dir}/webthing-iotjs
+iotjs_modules_dirs+=${webthing-iotjs_dir}
 
 
-${iotjs_modules_dir}/webthing-iotjs:
+${webthing-iotjs_dir}:
 	@mkdir -p $@
-	git clone --depth 1 --recursive ${webthing_url} $@
+	git clone --depth 1 --recursive ${webthing-iotjs_url} $@
 	make -C $@ iotjs/modules iotjs_modules_dir=${iotjs_modules_dir}
 
 iotjs/start: ${example_file} modules
@@ -43,6 +46,9 @@ test:
 	@echo
 	curl ${base_url}/properties/message
 	@echo
+
+iotjs_modules: ${iotjs_modules_dirs}
+	ls $<
 
 node_modules: package.json
 	npm install
