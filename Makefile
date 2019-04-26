@@ -26,12 +26,17 @@ V?=1
 eslint ?= node_modules/eslint/bin/eslint.js
 run_args?=
 
-
 %/start: example/index.js
 	${@D} $< "${run_args}"
 
 %/check: ${srcs}
 	${@D} $<
+
+help:
+	@echo "# make start"
+	@echo "# make rule/npm/start"
+	@echo "# make check"
+	@echo "# make lint"
 
 start: ${runtime}/start
 	@echo "# log: $@: $^"
@@ -67,6 +72,9 @@ rule/npm/version/%: package.json
 	-git commit -sam "webthing: Update version to ${@F}"
 	-git add package*.json
 	npm version ${@F}
+
+rule/npm/start: package.json
+	npm run ${@F}
 
 ${eslint}:
 	npm install --only=dev
