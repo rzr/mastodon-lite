@@ -60,7 +60,7 @@ Mastodon.prototype.post = function (message, callback) {
   config.path = self.config.api + '/statuses';
   config.headers = {
     'Authorization': 'Bearer ' + self.config.access_token,
-    'Content-Length': message.length
+    'Content-Length': Buffer.byteLength(message)
   };
 
   if (!callback) {
