@@ -17,8 +17,8 @@
 # limitations under the License.
 #}
 
-default: build
-
+default: help build
+	-sync
 
 runtime?=iotjs
 srcs?=mastodon-lite.js
@@ -37,6 +37,7 @@ help:
 	@echo "# make rule/npm/start"
 	@echo "# make check"
 	@echo "# make lint"
+	@echo "# make -C example/webthing help"
 
 start: ${runtime}/start
 	@echo "# log: $@: $^"
