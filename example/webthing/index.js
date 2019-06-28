@@ -54,7 +54,7 @@ function MastodonActuator (mastodon) {
 
 function MastodonSensor (mastodon, argv) {
   var self = this;
-  verbose('log: sensor:' + mastodon);
+  verbose('log: sensor: hostname=' + mastodon.config.hostname);
   this.frequency = 1 / 60;
   this.thing = new webthing.Thing('MastodonSensor', ['String'], 'An sensor example that just listen');
   this.mastodon = mastodon;
@@ -110,6 +110,7 @@ if (module.parent === null) {
 
   switch (verb) {
   case 'put':
+  case 'post':
     idx += 1;
     app.device = new MastodonActuator(app.mastodon, process.argv.slice(idx));
     break;
