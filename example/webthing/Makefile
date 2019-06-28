@@ -3,6 +3,9 @@
 # SPDX-License-Identifier: Apache-2.0
 # Copyright: 2018-present Samsung Electronics France SAS, and contributors
 
+default: help start
+	-sync
+
 example_file?=index.js
 
 IOTJS_EXTRA_MODULE_PATH?=../..
@@ -15,9 +18,20 @@ runtime?=iotjs
 iotjs_modules_dir?=${CURDIR}/iotjs_modules
 
 webthing-iotjs_url?=https://github.com/rzr/webthing-iotjs
-webthing-iotjs_revision?=webthing-iotjs-0.11.0
+webthing-iotjs_revision?=sandbox/rzr/devel/master
 webthing-iotjs_dir?=${iotjs_modules_dir}/webthing-iotjs
 iotjs_modules_dirs+=${webthing-iotjs_dir}
+
+message?=${webthing-iotjs_url} \#WebThingIotJs test using \#MastodonLite
+run_args?=
+
+
+help:
+	@echo "## Usage:"
+	@echo "# make start"
+	@echo "# make demo"
+	@echo "# make put"
+	@echo "# make client/put"
 
 
 ${webthing-iotjs_dir}:
@@ -26,25 +40,29 @@ ${webthing-iotjs_dir}:
 	make -C $@ iotjs/modules iotjs_modules_dir=${iotjs_modules_dir}
 
 iotjs/start: ${example_file} modules
-	iotjs $<
+	iotjs $< ${run_args}
 
 iotjs/debug: ${example_file}
 	rm -rf node_modules
 	NODE_PATH=iotjs_modules:../.. node $<
-test:
+
+test: client/get client/post
+	curl ${base_url}/properties/message
+
+client/get:
 	curl ${base_url}
 	@echo
 	curl ${base_url}/properties
 	@echo
 	curl ${base_url}/properties/message
 	@echo
+
+client/put:
 	curl \
  -X PUT \
  -H "Content-Type: application/json" \
- --data "{\"message\":\"${webthing_url}# #WebThingIotJs\"}" \
+ --data "{\"message\":\"${message}\"}" \
  "${base_url}/properties/message"
-	@echo
-	curl ${base_url}/properties/message
 	@echo
 
 iotjs_modules: ${iotjs_modules_dirs}
@@ -60,7 +78,7 @@ modules: ${runtime}/modules
 	@echo "# $@: $^"
 
 node/start: node_modules
-	npm start
+	npm start ${run_args}
 
 start: iotjs/start
 	@echo "# $@: $^"
@@ -72,7 +90,11 @@ cleanall:
 	rm -rf iotjs_modules node_modules
 
 put:
-	echo "npm start ${port} post"
+	${MAKE} ${runtime}/start run_args="8888 $@"
+
+get:
+	${MAKE} ${runtime}/start run_args="8888 $@"
+
 
 timelines/%: ${example_file} ${iotjs_modules_subdirs}
 	iotjs $< ${port}  get '$@?limit=1'
