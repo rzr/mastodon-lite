@@ -1,6 +1,7 @@
 #!/bin/echo docker build . -f
 # -*- coding: utf-8 -*-
-#{  Copyright 2018-present Samsung Electronics Co., Ltd. and other contributors
+#{ 
+# Copyright 2018-present Samsung Electronics Co., Ltd. and other contributors
 # 
 #  Licensed under the Apache License, Version 2.0 (the "License");
 #  you may not use this file except in compliance with the License.
@@ -67,23 +68,23 @@ iotjs-snapshot="$version" iotjs="$version" \
   && iotjs -h || echo "log: iotjs's usage expected to be printed before" \
   && sync
 
-ENV project generic-sensor-lite
-ADD . /usr/local/${project}/${project}
-WORKDIR /usr/local/${project}/${project}
+ENV project mastodon-lite
+ADD . /usr/local/opt/${project}/src/${project}
+WORKDIR /usr/local/opt/${project}/src/${project}
 RUN echo "#log: ${project}: Preparing sources" \
   && set -x \
   && make setup \
   && sync
 
-WORKDIR /usr/local/${project}/${project}
+WORKDIR /usr/local/opt/${project}/src/${project}
 RUN echo "#log: ${project}: Testing sources" \
   && set -x \
-  && ls .mastodon-lite.json || echo "ERROR: please add config file to run actual test" \
-  && ls .mastodon-lite.json && echo "WARNING: Don't publish image" \
-  && cp -v .mastodon-lite.json ${HOME} || echo "Using default config" \
+  && ls .${project}.json || echo "ERROR: please add config file to run actual test" \
+  && ls .${project}.json && echo "WARNING: Don't publish image" \
+  && cp -v .${project}.json ${HOME} || echo "Using default config" \
   && make test \
   && sync
 
-WORKDIR /usr/local/${project}/${project}
+WORKDIR /usr/local/opt/${project}/src/${project}
 ENTRYPOINT [ "/usr/bin/env", "make" ]
 CMD [ "test" ]

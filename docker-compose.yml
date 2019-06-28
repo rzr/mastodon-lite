@@ -21,4 +21,4 @@ services:
     build: .
     command: test
     volumes:
-      - /usr/local/mastodon-lite/mastodon-lite/
+      - /usr/local/opt/mastodon-lite/src/mastodon-lite/
