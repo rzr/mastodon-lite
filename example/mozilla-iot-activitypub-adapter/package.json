@@ -27,7 +27,7 @@
     "node_modules"
   ],
   "dependencies": {
-    "mastodon-lite": "*"
+    "mastodon-lite": "0.0.10"
   },
   "bundledDependencies": [
     "mastodon-lite"
@@ -74,6 +74,6 @@
     }
   },
   "devDependencies": {
-    "eslint": "^5.9.0"
+    "eslint": "^6.0.1"
   }
 }
