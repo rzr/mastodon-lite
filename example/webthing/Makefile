@@ -80,7 +80,7 @@ modules: ${runtime}/modules
 node/start: node_modules
 	npm start ${run_args}
 
-start: iotjs/start
+start: ${runtime}/start
 	@echo "# $@: $^"
 
 run: start
