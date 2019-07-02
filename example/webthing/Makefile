@@ -36,7 +36,7 @@ help:
 
 ${webthing-iotjs_dir}:
 	@mkdir -p $@
-	git clone --depth 1 --recursive ${webthing-iotjs_url} $@
+	git clone --depth 1 --recursive --branch ${webthing-iotjs_revision} ${webthing-iotjs_url} $@
 	make -C $@ iotjs/modules iotjs_modules_dir=${iotjs_modules_dir}
 
 iotjs/start: ${example_file} modules
