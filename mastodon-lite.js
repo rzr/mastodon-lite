@@ -139,4 +139,10 @@ Mastodon.prototype.request = function(argv, callback) {
   }
 };
 
+Mastodon.prototype.getUrl = function() {
+  return (this.config.port === 443 ? 'https' : 'http') +
+    '://' + this.config.hostname +
+    ':' + (this.config.port || 80);
+};
+
 module.exports = Mastodon;
