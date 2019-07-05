@@ -27,18 +27,16 @@ function MastodonActuator (mastodon) {
   verbose('log: actuator');
   this.message = mastodon.message;
   this.thing = new webthing.Thing('MastodonActuator', ['String'], 'An actuator example that just blog');
+  this.thing.setUiHref(mastodon.getUrl());
   this.mastodon = mastodon;
   this.value = new webthing.Value(this.message, function (value) {
     if (self.message !== String(value)) {
       self.message = String(value);
       console.log(self.message);
-      self.mastodon.request(
-        ['post'].concat(value),
-        function(err, data) {
-          if (err) throw err;
-          console.log(data);
-        }
-      );
+      self.mastodon.post(value, function(err, data) {
+          if (err || !data) throw err;
+          self.thing.setUiHref(data.url);
+        });
     }
   });
   this.thing.addProperty(new webthing.Property(
@@ -57,6 +55,7 @@ function MastodonSensor (mastodon, argv) {
   verbose('log: sensor: hostname=' + mastodon.config.hostname);
   this.frequency = 1 / 60;
   this.thing = new webthing.Thing('MastodonSensor', ['String'], 'An sensor example that just listen');
+  this.thing.setUiHref(mastodon.getUrl());
   this.mastodon = mastodon;
   this.value = new webthing.Value(mastodon.message);
   this.thing.addProperty(new webthing.Property(
@@ -74,7 +73,8 @@ function MastodonSensor (mastodon, argv) {
     self.mastodon.request(
       ['get'].concat(argv),
       function(err, data) {
-        if (err) throw err;
+        if (err || !data || !data[0]) throw err;
+        self.thing.setUiHref(data[0].url);
         var value = data && data[0] && data[0].content;
         self.value.notifyOfExternalUpdate(value);
       }
