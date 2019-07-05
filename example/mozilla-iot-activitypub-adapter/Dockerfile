@@ -10,7 +10,7 @@ ENV DEBIAN_FRONTEND noninteractive
 ENV LC_ALL en_US.UTF-8
 ENV LANG ${LC_ALL}
 
-ENV project mozilla-activitypub-adapter
+ENV project mozilla-iot-activitypub-adapter
 
 ADD . /root/.mozilla-iot/addons/activitypub-adapter
 WORKDIR /root/.mozilla-iot/addons/${project}
