@@ -23,7 +23,7 @@ webthing-iotjs_dir?=${iotjs_modules_dir}/webthing-iotjs
 iotjs_modules_dirs+=${webthing-iotjs_dir}
 
 message?=${webthing-iotjs_url} \#WebThingIotJs test using \#MastodonLite
-run_args?=
+run_args+=${port}
 
 
 help:
@@ -32,6 +32,7 @@ help:
 	@echo "# make demo"
 	@echo "# make put"
 	@echo "# make client/put"
+	@echo '# make client/put message="$${message}"'
 
 
 ${webthing-iotjs_dir}:
@@ -97,8 +98,8 @@ get:
 
 
 timelines/%: ${example_file} ${iotjs_modules_subdirs}
-	iotjs $< ${port}  get '$@?limit=1'
-#	npm start ${port} get '$@?limit=1'
+	iotjs $< ${run_args}  get '$@?limit=1'
+#	npm start ${run_args} get '$@?limit=1'
 
 ${HOME}/.mastodon-lite.conf: ../../mastodon-lite.js
 	make -C ${<D} start
