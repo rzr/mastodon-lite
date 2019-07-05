@@ -74,7 +74,13 @@ class ActivityPubDevice extends Device {
     this.name = config.name;
     this.description = 'ActivityPub Actuator';
     this.actuatorType = config.actuatorType;
-
+    this.links = [
+      {
+        rel: 'alternate',
+        mediaType: 'text/html',
+        href: adapter.mastodon.getUrl()
+      }
+    ];
     for (const prop of config.properties) {
       this.properties.set(
         prop.name, new ActivityPubProperty(this, prop.name, prop.metadata,
