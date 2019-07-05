@@ -25,6 +25,8 @@ srcs?=mastodon-lite.js
 V?=1
 eslint ?= node_modules/eslint/bin/eslint.js
 run_args?=
+message?=http://purl.org/rzr/webthing-iotjs-opendata-20190202rzr
+
 
 %/start: example/index.js
 	${@D} $< "${run_args}"
@@ -37,6 +39,8 @@ help:
 	@echo "# make rule/npm/start"
 	@echo "# make check"
 	@echo "# make lint"
+	@echo "# make post"
+	@echo "# make post message=\"${message}# #MastodonLite from @rzr@social.samsunginet.net\""
 	@echo "# make -C example/webthing help"
 
 start: ${runtime}/start
@@ -96,6 +100,9 @@ timelines/%:
 timelines/direct:
 	npm -q start get "$@?limit=1"
 	${runtime} example get "$@?limit=1"
+
+post:
+	${runtime} example post "${message}"
 
 demo: timelines/home timelines/direct
 	@echo "# log: $@: $^"
