@@ -18,7 +18,7 @@ runtime?=iotjs
 iotjs_modules_dir?=${CURDIR}/iotjs_modules
 
 webthing-iotjs_url?=https://github.com/rzr/webthing-iotjs
-webthing-iotjs_revision?=webthing-iotjs-0.11.2-1
+webthing-iotjs_revision?=webthing-iotjs-0.11.3.0
 webthing-iotjs_dir?=${iotjs_modules_dir}/webthing-iotjs
 iotjs_modules_dirs+=${webthing-iotjs_dir}
 
