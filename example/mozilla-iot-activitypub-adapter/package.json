@@ -27,7 +27,7 @@
     "node_modules"
   ],
   "dependencies": {
-    "mastodon-lite": "0.0.13"
+    "mastodon-lite": "0.0.14"
   },
   "bundledDependencies": [
     "mastodon-lite"
