@@ -21,8 +21,6 @@ So far only 'https' module is used (and 'fs' for the example app)
 
 [![Presentation](https://image.slidesharecdn.com/webthing-iotjs-20181022rzr-181027220201/95/webthingiotjs20181022rzr-25-638.jpg)](https://www.slideshare.net/slideshow/embed_code/key/BGdKOn9HHRF4Oa#webthing-iotjs# "WebThingIotJs")
 
-[![Build Status](https://api.travis-ci.org/rzr/mastodon-lite.svg?branch=master)](https://travis-ci.org/rzr/mastodon-lite)
-
 
 ## USAGE: ##
 
