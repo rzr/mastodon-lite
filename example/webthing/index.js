@@ -26,7 +26,8 @@ function MastodonActuator (mastodon) {
   var self = this;
   verbose('log: actuator');
   this.message = mastodon.message;
-  this.thing = new webthing.Thing('MastodonActuator', ['String'], 'An actuator example that just blog');
+  this.thing = new webthing.Thing('urn:dev:ops:mastodon-actuator-1234',
+    'MastodonActuator', ['String'], 'An actuator example that just blog');
   this.thing.setUiHref(mastodon.getUrl());
   this.mastodon = mastodon;
   this.value = new webthing.Value(this.message, function (value) {
@@ -54,7 +55,8 @@ function MastodonSensor (mastodon, argv) {
   var self = this;
   verbose('log: sensor: hostname=' + mastodon.config.hostname);
   this.frequency = 1 / 60;
-  this.thing = new webthing.Thing('MastodonSensor', ['String'], 'An sensor example that just listen');
+  this.thing = new webthing.Thing('urn:dev:ops:mastodon-sensor-1234',
+    'MastodonSensor', ['String'], 'An sensor example that just listen');
   this.thing.setUiHref(mastodon.getUrl());
   this.mastodon = mastodon;
   this.value = new webthing.Value(mastodon.message);
