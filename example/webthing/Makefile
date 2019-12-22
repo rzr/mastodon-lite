@@ -66,6 +66,9 @@ client/put:
  "${base_url}/properties/message"
 	@echo
 
+client/post: client/put
+	@echo "# TODO: $@ maybe be implemented differently than $<"
+
 iotjs_modules: ${iotjs_modules_dirs}
 	ls $<
 
