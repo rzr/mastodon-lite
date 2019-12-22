@@ -1,6 +1,6 @@
 {
   "name": "mastodon-lite",
-  "version": "0.0.16",
+  "version": "0.0.17",
   "description": "Lightweight Mastodon micro blogging client module supporting IoT.js runtime",
   "main": "index.js",
   "scripts": {
