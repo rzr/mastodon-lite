@@ -25,7 +25,8 @@ srcs?=mastodon-lite.js
 V?=1
 eslint ?= node_modules/eslint/bin/eslint.js
 run_args?=
-message?=http://purl.org/rzr/webthing-iotjs-opendata-20190202rzr
+url?=http://github.com/rzr/mastodon-lite
+message?=${url} \#ActivityPub : \#MastodonLite test, ping @tizenhelper@mastodon.social
 
 
 %/start: example/index.js
