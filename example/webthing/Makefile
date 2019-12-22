@@ -28,9 +28,9 @@ run_args+=${port}
 
 help:
 	@echo "## Usage:"
-	@echo "# make start"
+	@echo "# make start # will start sensor server"
 	@echo "# make demo"
-	@echo "# make put"
+	@echo "# make put # will start actuator server"
 	@echo "# make client/put"
 	@echo '# make client/put message="$${message}"'
 
