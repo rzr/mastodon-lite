@@ -58,7 +58,7 @@ On first run, if not already present, configuration file will generated in ~/.ma
 
 ```sh
 git clone https://github.com/rzr/mastodon-lite ; cd mastodon-lite
-node start
+npm start
 # error: TODO: edit configuration file ~/.mastodon-lite.json
 cat ~/.mastodon-lite.json
 ```
@@ -72,7 +72,7 @@ if running on different instance, host and port should be changed accordingly,
 By default timeline will be displayed:
 
 ```
-node start
+npm start
 ```
 
 Response is a JSON stream of all posts:
@@ -103,7 +103,7 @@ npm run start get 'timelines/direct'
 To post a message, just add a quoted message as parameter:
 
 ```
-node start 'https://www.npmjs.com/package/mastodon-lite# #MastodonLite : A lightweight #Mastodon client to support #ConstraintedDevices using #IotJs cc: @TizenHelper@quitter.is '
+npm start 'https://www.npmjs.com/package/mastodon-lite# #MastodonLite : A lightweight #Mastodon client to support #ConstraintedDevices using #IotJs cc: @TizenHelper@quitter.is '
 ```
 
 Message (toot) should be displayed on your profile's page (eg: https://mastodon.social/@tizenhelper/99568473401250711 )
