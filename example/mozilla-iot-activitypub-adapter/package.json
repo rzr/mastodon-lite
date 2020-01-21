@@ -21,10 +21,12 @@
   },
   "files": [
     "LICENSE",
+    "README.md",
     "SHA256SUMS",
     "activitypub-adapter.js",
     "activitypub-notifier.js",
     "index.js",
+    "manifest.json",    
     "node_modules"
   ],
   "dependencies": {
