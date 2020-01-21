@@ -41,8 +41,21 @@ const ACTIVITYPUB_THINGS = [
 class ActivityPubProperty extends Property {
   constructor(device, name, desc, value) {
     super(device, name, desc);
+    const that = this;
     this.setCachedValue(value);
     this.device.notifyPropertyChanged(this);
+
+    this.frequency = 1 / 60;
+    this.inteval = setInterval(function() {
+      that.device.adapter.mastodon.get(null,
+        function(err, data) {
+          if (err || !data || !data[0]) throw err;
+          var value = data && data[0] && data[0].content;
+          that.setCachedValue(value);
+          that.device.notifyPropertyChanged(that);
+        }
+      );
+    }, 1000 / this.frequency);
   }
 
   setValue(value) {
