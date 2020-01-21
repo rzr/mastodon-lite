@@ -94,10 +94,10 @@ cleanall:
 	rm -rf iotjs_modules node_modules
 
 put:
-	${MAKE} ${runtime}/start run_args="8888 $@"
+	${MAKE} ${runtime}/start run_args="${port} $@"
 
 get:
-	${MAKE} ${runtime}/start run_args="8888 $@"
+	${MAKE} ${runtime}/start run_args="${port} $@"
 
 
 timelines/%: ${example_file} ${iotjs_modules_subdirs}
