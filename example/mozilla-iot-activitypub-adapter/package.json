@@ -23,6 +23,7 @@
     "LICENSE",
     "SHA256SUMS",
     "activitypub-adapter.js",
+    "activitypub-notifier.js",
     "index.js",
     "node_modules"
   ],
