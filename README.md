@@ -246,7 +246,7 @@ More details are explained on this Wiki page:
 * https://www.npmjs.com/package/mastodon-lite
 * http://iotjs.net
 * https://w3c.github.io/activitypub/
-* https://docs.joinmastodon.org/api/rest/timelines/
+* https://docs.joinmastodon.org/methods/timelines/#
 * https://github.com/tootsuite/documentation/blob/master/Using-the-API/API.md#timelines
 * https://mastodon.social/@tizenhelper/101092551900857924
 * https://www.slideshare.net/rzrfreefr/webthingiotjs20181022rzr-120959360
