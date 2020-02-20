@@ -7,6 +7,7 @@
  */
 
 const Mastodon = require('mastodon-lite');
+const htmlToText = require('html-to-text');
 
 const {
   Adapter,
@@ -50,7 +51,8 @@ class ActivityPubProperty extends Property {
       that.device.adapter.mastodon.get(null,
         function(err, data) {
           if (err || !data || !data[0]) throw err;
-          var value = data && data[0] && data[0].content;
+          var value = data && data[0] && data[0].content
+	      && htmlToText.fromString(data[0].content);
           that.setCachedValue(value);
           that.device.notifyPropertyChanged(that);
         }
