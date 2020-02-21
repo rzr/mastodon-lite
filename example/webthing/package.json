@@ -6,7 +6,7 @@
   "scripts": {
     "start": "NODE_PATH=.:../.. node index"
   },
-  "author": "Philippe Coval <p.coval@samsung.com> (https://www.npmjs.com/~rzr)",
+  "author": "Philippe Coval <rzr@users.sf.net> (https://purl.org/rzr)",
   "license": "Apache-2.0",
   "repository": {
     "type": "git",

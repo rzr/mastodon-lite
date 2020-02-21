@@ -17,7 +17,7 @@
 #}
 
 FROM rzrfreefr/iotjs-express:latest
-MAINTAINER Philippe Coval (p.coval@samsung.com)
+LABEL maintainer="Philippe Coval (rzr@users.sf.net)"
 
 ENV project mastodon-lite
 COPY Makefile /usr/local/opt/${project}/src/${project}/
