@@ -19,7 +19,11 @@ for supporting IoT.js runtime, (as well as node).
 
 So far only 'https' module is used (and 'fs' for the example app)
 
-[![Presentation](https://image.slidesharecdn.com/webthing-iotjs-20181022rzr-181027220201/95/webthingiotjs20181022rzr-25-638.jpg)](https://www.slideshare.net/slideshow/embed_code/key/BGdKOn9HHRF4Oa#webthing-iotjs# "WebThingIotJs")
+[![Presentation](
+https://image.slidesharecdn.com/webthing-iotjs-20181022rzr-181027220201/95/webthingiotjs20181022rzr-25-638.jpg
+)](
+https://www.slideshare.net/slideshow/embed_code/key/BGdKOn9HHRF4Oa#webthing-iotjs#
+"WebThingIotJs")
 
 
 ## USAGE: ##
@@ -34,22 +38,22 @@ Running from sources tree is straightforward, but each step will be detailed.
 
 Then user need to create an account on decentralized, mastodon social network (or setup your own instance)
 
-* https://instances.social
+* <https://instances.social>
 
 While we're here, let's go to settings to create an application and generate it's secret token, that will be used later:
 
 Once logged go to "Settings" / "Development" / "New Application" ie:
 
-* https://mastodon.social/settings/applications/new
+* <https://mastodon.social/settings/applications/new>
 
 Then just set application name to "mastodon-lite" or any name of your choice, other fields can be skipped.
 
 
 Then your "mastodon-lite" application should appear on:
 
-* https://mastodon.social/settings/applications
+* <https://mastodon.social/settings/applications>
 
-Click on it and note down the "access token" (64char hexa string)
+Click on it and note down the "access token" (64char hexa string or base64 string)
 
 
 #### CONFIGURE: ####
@@ -106,7 +110,8 @@ To post a message, just add a quoted message as parameter:
 npm start 'https://www.npmjs.com/package/mastodon-lite# #MastodonLite : A lightweight #Mastodon client to support #ConstraintedDevices using #IotJs cc: @TizenHelper@quitter.is '
 ```
 
-Message (toot) should be displayed on your profile's page (eg: https://mastodon.social/@tizenhelper/99568473401250711 )
+Message (toot) should be displayed on your profile's page 
+(eg: <https://mastodon.social/@tizenhelper/99568473401250711> )
 and client will get server's answer in this form:
 
 ```
@@ -218,44 +223,59 @@ Alternatively gitmodule can be used to track master branch.
 
 Rebuild demo from this makefile:
 
-* https://github.com/rzr/TizenRT/tree/master/rules/mastodon-lite
+* <https://github.com/rzr/TizenRT/tree/master/rules/mastodon-lite>
 
+
+## USING MOZILLA WEBTHING GATEWAY: ##
 
 ## DEMO: ##
 
-[![web-of-things-agriculture-20180712rzr.webm](https://s-opensource.org/wp-content/uploads/2018/07/web-of-things-agriculture-20180712rzr.gif)](https://player.vimeo.com/video/279677314#web-of-things-agriculture-20180712rzr.webm "Video Demo")
+[![web-of-things-agriculture-20180712rzr.webm](
+https://camo.githubusercontent.com/8c693d7e5d3950831e7f7fd62aa1dc790a6100f8/68747470733a2f2f732d6f70656e736f757263652e6f72672f77702d636f6e74656e742f75706c6f6164732f323031382f30372f7765622d6f662d7468696e67732d6167726963756c747572652d3230313830373132727a722e676966#web-of-things-agriculture-20180712rzr.gif
+)](
+https://player.vimeo.com/video/279677314#web-of-things-agriculture-20180712rzr.webm
+"Video Demo")
 
 This "Smart Orchid" demonstrate how to link IoT to social web, using WebOfThings and ActivityPub,
 with Mozilla Thing project, check this wiki page from webthing-iotjs project:
 
-* https://github.com/rzr/webthing-iotjs/wiki/Social
+* <https://github.com/rzr/webthing-iotjs/wiki/Social>
 
 For code check [example/webthing](example/webthing) in this mastodon-lite project.
 
 An other integration example is add on adapter for mozilla-iot's Gateway:
 [example/mozilla-iot-activitypub-adapter](example/mozilla-iot-activitypub-adapter):
 
-More details are explained on this Wiki page:
+More details are explained in addon directory in README file :
 
-* https://github.com/rzr/webthing-iotjs/wiki/Social
+* [./example/mozilla-iot-activitypub-adapter/README.md](./example/mozilla-iot-activitypub-adapter/README.md)
+
+Feedback also welcome on this Wiki page:
+
+* <https://github.com/rzr/webthing-iotjs/wiki/Social>
 
 
 ## RESOURCES: ##
 
-* https://github.com/rzr/mastodon-lite
-* https://www.npmjs.com/package/mastodon-lite
-* https://www.mozillapulse.org/entry/959
-* https://libraries.io/npm/mastodon-lite
-* http://iotjs.net
-* https://w3c.github.io/activitypub/
-* https://docs.joinmastodon.org/methods/timelines/#
-* https://github.com/tootsuite/documentation/blob/master/Using-the-API/API.md#timelines
-* https://mastodon.social/@tizenhelper/101092551900857924
-* https://www.slideshare.net/rzrfreefr/webthingiotjs20181022rzr-120959360
-* https://mastodon.social/about/more
-* https://github.com/jerryscript-project/iotjs-modules
+* <https://purl.org/rzr/mastodon-lite>
+* <https://github.com/rzr/mastodon-lite>
+* <https://www.npmjs.com/package/mastodon-lite>
+* <https://www.mozillapulse.org/entry/959>
+* <https://libraries.io/npm/mastodon-lite>
+* <http://iotjs.net/>
+* <https://w3c.github.io/activitypub/>
+* <https://docs.joinmastodon.org/methods/timelines/#>
+* <https://github.com/tootsuite/documentation/blob/master/Using-the-API/API.md#timelines>
+* <https://mastodon.social/@tizenhelper/101092551900857924>
+* <https://www.slideshare.net/rzrfreefr/webthingiotjs20181022rzr-120959360>
+* <https://mastodon.social/about/more>
+* <https://github.com/jerryscript-project/iotjs-modules>
 
 
 ## LICENSE: ##
 
-[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2Frzr%2Fmastodon-lite.svg?type=large)](https://app.fossa.io/projects/git%2Bgithub.com%2Frzr%2Fmastodon-lite?ref=badge_large)
+[![FOSSA Status](
+https://app.fossa.io/api/projects/git%2Bgithub.com%2Frzr%2Fmastodon-lite.svg?type=large
+)](
+https://app.fossa.io/projects/git%2Bgithub.com%2Frzr%2Fmastodon-lite?ref=badge_large
+)
