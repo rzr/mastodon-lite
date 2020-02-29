@@ -1,6 +1,7 @@
+# .gitignore
 *~
 *.tmp
-/tmp/
+**/tmp/
 npm-debug.log
 **/node_modules/
 **/iotjs_modules/
