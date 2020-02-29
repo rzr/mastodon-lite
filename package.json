@@ -34,7 +34,7 @@
   "bin": {
     "mastodon-lite": "./example/index.js"
   },
-  "homepage": "https://libraries.io/npm/mastodon-lite",
+  "homepage": "https://purl.org/rzr/mastodon-lite",
   "devDependencies": {
     "eslint": "^6.8.0",
     "eslint-config-standard": "^14.1.0",
