@@ -1,0 +1,11 @@
+{
+  "name": "mastodon-lite-action",
+  "version": "0.0.0",
+  "description": "Post to fediverse from github",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Philippe Coval <rzr@users.sf.net> (https://purl.org/rzr)",
+  "license": "Apache-2.0",
+}
