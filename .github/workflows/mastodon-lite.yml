@@ -1,0 +1,10 @@
+name: mastodon-lite-post
+on: [push]
+jobs:
+  post:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: rzr/mastodon-lite@master
+        with:
+          status: "https://github.com/rzr/mastodon-lite# has been updated, feedback welcome"
+          access-token: ${{ secrets.MASTODON_ACCESS_TOKEN }}
