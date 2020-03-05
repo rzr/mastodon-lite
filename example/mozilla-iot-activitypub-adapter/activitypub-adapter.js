@@ -47,17 +47,18 @@ class ActivityPubProperty extends Property {
     this.device.notifyPropertyChanged(this);
 
     this.frequency = 1 / 60;
-    this.inteval = setInterval(function() {
+    this.inteval = setInterval(() => {
       that.device.adapter.mastodon.get(null,
-        function(err, data) {
-          if (err || !data || !data[0]) throw err;
-          var value = data && data[0] && data[0].content
-	      && htmlToText.fromString(data[0].content,
-				       {noLinkBrackets: true,
-					ignoreImage: true,
-					ignoreHref: true
-				       });
-          that.setCachedValue(value);
+        (err, data) => {
+          if (err || !data || !data[0]) {
+throw err;
+}
+          const latest = data && data[0] && data[0].content &&
+              htmlToText.fromString(data[0].content,
+                                    {noLinkBrackets: true,
+                                     ignoreImage: true,
+                                     ignoreHref: true});
+          that.setCachedValue(latest);
           that.device.notifyPropertyChanged(that);
         }
       );
