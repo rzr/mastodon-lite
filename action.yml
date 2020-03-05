@@ -1,0 +1,13 @@
+name: 'mastodon-lite-action'
+description: 'Post an activitypub message from GitHub action'
+author: 'Philippe Coval <http://purl.org/rzr/>'
+inputs:
+  status:
+    description: 'Message to post to fediverse'
+    default: "Hello from #Github actions"
+  access-token:
+    description: >
+      Application access token, generated from mastodon dashboard.
+runs:
+  using: "node12"
+  main: "index.js"
