@@ -18,7 +18,7 @@
 #}
 
 default: help build
-	-sync
+	-@sync
 
 runtime?=iotjs
 srcs?=mastodon-lite.js
@@ -110,3 +110,6 @@ demo: timelines/home timelines/direct
 
 iotjs/modules: ${iotjs_modules_dirs}
 	ls $<
+
+all build:
+	@echo "# log: $@: $^"
