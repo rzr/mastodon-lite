@@ -1,16 +1,31 @@
+// -*- mode: js; js-indent-level:2;  -*-
+// Copyright 2020-present Philippe Coval <http://purl.org/rzr/>
+// SPDX-Licence: Apache-2.0
+
 const core = require('@actions/core');
 const github = require('@actions/github');
 const mastodon = require('mastodon-lite');
 
 try {
-  // `who-to-greet` input defined in action metadata file
-  const nameToGreet = core.getInput('who-to-greet');
-  console.log(`Hello ${nameToGreet}!`);
-  const time = (new Date()).toTimeString();
-  core.setOutput("time", time);
-  // Get the JSON webhook payload for the event that triggered the workflow
-  const payload = JSON.stringify(github.context.payload, undefined, 2)
-  console.log(`The event payload: ${payload}`);
+  var app = {};
+  app.config = {
+    access_token: '[TODO: Update with app token at https://mastodon.social/settings/applications]',
+    host: 'mastodon.social',
+    port: 443,
+    api: '/api/v1',
+    rejectUnauthorized: false
+  };
+  if (process.env.MASTODON_ACCESS_TOKEN) {
+    app.config.access_token = process.env.MASTODON_ACCESS_TOKEN;
+  }
+  app.mastodon = new Mastodon(app.config);
+  const message = core.getInput('status');
+  app.mastodon.post(message, (err, status) => {
+    if (err) {
+      core.setFailed(err);
+    }
+    console.log(status);
+  });
 } catch (error) {
   core.setFailed(error.message);
 }
