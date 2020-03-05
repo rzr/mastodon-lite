@@ -5,6 +5,9 @@
   "description": "ActivityPub/Mastodon adapter for Mozilla IoT Gateway",
   "author": "Philippe Coval",
   "main": "index.js",
+  "scripts": {
+    "lint": "eslint --no-ignore *.js"
+  },
   "keywords": [
     "mozilla",
     "iot",
