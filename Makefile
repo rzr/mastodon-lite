@@ -70,14 +70,19 @@ setup:
 	${runtime} -h ||:
 
 rule/npm/version/%: package.json
+	-git tag -d ${@F}
 	-git describe --tags
+	make -C example/mozilla-iot-activitypub-adapter "$@"
 	cd example/webthing && npm version ${@F}
 	-git add example/webthing/package*.json
-	cd example/mozilla-iot-activitypub-adapter && npm version ${@F}
 	-git add example/*/package*.json
 	-git commit -sam "webthing: Update version to ${@F}"
 	-git add package*.json
+	-git tag -d v${@F}
 	npm version ${@F}
+	-git tag -d v${@F}
+	@echo "# TODO: Edit Release ${@F}"
+	-git commit --amend 
 
 rule/npm/start: package.json
 	npm run ${@F}
