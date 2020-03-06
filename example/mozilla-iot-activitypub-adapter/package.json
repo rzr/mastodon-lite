@@ -34,7 +34,7 @@
   ],
   "dependencies": {
     "html-to-text": "^5.1.1",
-    "mastodon-lite": "0.0.19"
+    "mastodon-lite": "0.0.20"
   },
   "bundledDependencies": [
     "mastodon-lite"
