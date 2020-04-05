@@ -1,7 +1,7 @@
 {
   "name": "activitypub-adapter",
   "display_name": "ActivityPub",
-  "version": "0.0.21",
+  "version": "0.0.22",
   "description": "ActivityPub/Mastodon adapter for Mozilla IoT Gateway",
   "author": "Philippe Coval",
   "main": "index.js",
