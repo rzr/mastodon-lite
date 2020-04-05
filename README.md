@@ -255,6 +255,8 @@ Feedback also welcome on this Wiki page:
 
 * <https://purl.org/rzr/mastodon-lite>
 * <https://github.com/rzr/mastodon-lite>
+* <https://libraries.io/npm/mastodon-lite/usage>
+* <https://www.openhub.net/p/mastodon-lite>
 * <https://www.npmjs.com/package/mastodon-lite>
 * <https://www.mozillapulse.org/entry/959>
 * <https://libraries.io/npm/mastodon-lite>
