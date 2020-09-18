@@ -19,6 +19,7 @@ function message() {
   return {
     name: 'message',
     metadata: {
+      label: "Message",
       type: 'string'
     }
   };
