@@ -34,7 +34,7 @@
   ],
   "dependencies": {
     "html-to-text": "^5.1.1",
-    "mastodon-lite": "0.0.21"
+    "mastodon-lite": "0.0.22"
   },
   "bundledDependencies": [
     "mastodon-lite"
@@ -81,6 +81,6 @@
     }
   },
   "devDependencies": {
-    "eslint": "^6.8.0"
+    "eslint": "^7.9.0"
   }
 }
