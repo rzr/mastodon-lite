@@ -18,11 +18,25 @@ for supporting IoT.js runtime, (as well as node).
 
 So far only 'https' module is used (and 'fs' for the example app)
 
-[![Presentation](
-https://image.slidesharecdn.com/webthing-iotjs-20181022rzr-181027220201/95/webthingiotjs20181022rzr-25-638.jpg
+## DEMO ##
+
+An Integration example is the ActivityPub adapter for WebThings's Gateway
+
+[![mozilla-iot-activitypub-adapter-apconf2020-rzr](
+https://peertube.mastodon.host/static/previews/b0357106-2c8a-42b0-aeb3-efe4a6b0e127.jpg
 )](
-https://www.slideshare.net/slideshow/embed_code/key/BGdKOn9HHRF4Oa#webthing-iotjs#
-"WebThingIotJs")
+https://peertube.mastodon.host/videos/watch/b0357106-2c8a-42b0-aeb3-efe4a6b0e127#mozilla-iot-activitypub-adapter-apconf2020-rzr#
+"Watch on peertube"
+)
+
+
+More details are explained in addon directory:
+
+* [./example/mozilla-iot-activitypub-adapter](./example/mozilla-iot-activitypub-adapter):
+
+Feedback also welcome on this Wiki page:
+
+* <https://github.com/rzr/webthing-iotjs/wiki/Social>
 
 ## USAGE ##
 
@@ -227,7 +241,7 @@ Rebuild demo from this makefile:
 ## DEMO ##
 
 [![web-of-things-agriculture-20180712rzr.webm](
-https://camo.githubusercontent.com/8c693d7e5d3950831e7f7fd62aa1dc790a6100f8/68747470733a2f2f732d6f70656e736f757263652e6f72672f77702d636f6e74656e742f75706c6f6164732f323031382f30372f7765622d6f662d7468696e67732d6167726963756c747572652d3230313830373132727a722e676966#web-of-things-agriculture-20180712rzr.gif
+https://i.vimeocdn.com/video/712894947.jpg#web-of-things-agriculture-20180712rzr.gif
 )](
 https://player.vimeo.com/video/279677314#web-of-things-agriculture-20180712rzr.webm
 "Video Demo")
@@ -240,16 +254,6 @@ with Mozilla Thing project, check this wiki page from webthing-iotjs project:
 
 For code check [example/webthing](example/webthing) in this mastodon-lite project.
 
-An other integration example is add on adapter for mozilla-iot's Gateway:
-[example/mozilla-iot-activitypub-adapter](example/mozilla-iot-activitypub-adapter):
-
-More details are explained in addon directory in README file :
-
-* [./example/mozilla-iot-activitypub-adapter/README.md](./example/mozilla-iot-activitypub-adapter/README.md)
-
-Feedback also welcome on this Wiki page:
-
-* <https://github.com/rzr/webthing-iotjs/wiki/Social>
 
 ## RESOURCES ##
 
@@ -268,6 +272,7 @@ Feedback also welcome on this Wiki page:
 * <https://www.slideshare.net/rzrfreefr/webthingiotjs20181022rzr-120959360>
 * <https://mastodon.social/about/more>
 * <https://github.com/jerryscript-project/iotjs-modules>
+* <https://github.com/WebThingsIO/addon-list/pull/158#activitypub-adapter>
 
 ## LICENSE ##
 
@@ -276,3 +281,9 @@ https://app.fossa.io/api/projects/git%2Bgithub.com%2Frzr%2Fmastodon-lite.svg?typ
 )](
 https://app.fossa.io/projects/git%2Bgithub.com%2Frzr%2Fmastodon-lite?ref=badge_large
 )
+
+[![Presentation](
+https://image.slidesharecdn.com/webthing-iotjs-20181022rzr-181027220201/95/webthingiotjs20181022rzr-25-638.jpg
+)](
+https://www.slideshare.net/slideshow/embed_code/key/BGdKOn9HHRF4Oa#webthing-iotjs#
+"WebThingIotJs")
