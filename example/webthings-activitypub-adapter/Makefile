@@ -6,7 +6,7 @@
 
 default: help all
 
-project ?= mozilla-iot-activitypub-adapter
+project ?= webthings-activitypub-adapter
 
 lint: node_modules
 	npm run $@
@@ -21,4 +21,4 @@ rule/npm/version/%: manifest.json
 	npm version ${@F}
 	-git describe --tags
 	sed -e "s|\(\"version\":\) .*|\1 \"${@F}\"|g" -i $<
-	-git commit -sam "moziot: Update version to ${@F}"
+	-git commit -sam "webthings: Update version to ${@F}"
