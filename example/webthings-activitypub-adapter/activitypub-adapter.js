@@ -8,9 +8,11 @@
 
 const Mastodon = require('mastodon-lite');
 const htmlToText = require('html-to-text');
+const manifest = require('./manifest.json');
 
 const {
   Adapter,
+  Database,
   Device,
   Property
 } = require('gateway-addon');
@@ -115,40 +117,43 @@ class ActivityPubDevice extends Device {
 }
 
 class ActivityPubAdapter extends Adapter {
-  constructor(addonManager, manifest) {
-    super(addonManager, manifest.name, manifest.name);
+  constructor(addonManager) {
+    super(addonManager, manifest.id, manifest.id);
     addonManager.addAdapter(this);
 
-    let devices;
-    if (manifest.moziot.config.hasOwnProperty('activitypub') &&
-        manifest.moziot.config.activitypub.length > 0) {
-      devices = manifest.moziot.config.activitypub;
-    } else {
-      devices = ACTIVITYPUB_THINGS;
-    }
+    const db = new Database(this.packageName);
+    db.open().then(() => {
+      return db.loadConfig();
+    }).then((config) => {
+      let devices;
+      if (config.hasOwnProperty('activitypub') &&
+          config.activitypub.length > 0) {
+        devices = config.activitypub;
+      } else {
+        devices = ACTIVITYPUB_THINGS;
+      }
 
-    this.config = {};
-    this.config.access_token = manifest.moziot.config.access_token;
-    this.config.hostname = manifest.moziot.config.hostname ||
-                            'mastodon.social';
-    this.config.port = Number(manifest.moziot.config.port || 443);
-    this.config.api = manifest.moziot.config.api || '/api/v1';
-    this.config.rejectUnauthorized =
-      Boolean(manifest.moziot.config.rejectUnauthorized);
-    this.mastodon = Mastodon(this.config);
+      this.config = {};
+      this.config.access_token = config.access_token;
+      this.config.hostname = config.hostname || 'mastodon.social';
+      this.config.port = Number(config.port || 443);
+      this.config.api = config.api || '/api/v1';
+      this.config.rejectUnauthorized = Boolean(config.rejectUnauthorized);
+      this.mastodon = Mastodon(this.config);
 
-    for (let idx = 0; idx < devices.length; idx += 1) {
-      const id = `activitypub-${idx}`;
-      new ActivityPubDevice(this, id, devices[idx]);
-    }
+      for (let idx = 0; idx < devices.length; idx += 1) {
+        const id = `activitypub-${idx}`;
+        new ActivityPubDevice(this, id, devices[idx]);
+      }
+    }).catch(console.error);
   }
 }
 
-function loadActivityPubAdapter(addonManager, manifest, errorCallback) {
+function loadActivityPubAdapter(addonManager, errorCallback) {
   try {
-    new ActivityPubAdapter(addonManager, manifest);
+    new ActivityPubAdapter(addonManager);
   } catch (err) {
-    errorCallback(manifest.name, `error: Failed to construct${err}`);
+    errorCallback(manifest.id, `error: Failed to construct${err}`);
   }
 }
 

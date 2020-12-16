@@ -1,0 +1,44 @@
+{
+  "name": "activitypub-adapter",
+  "display_name": "ActivityPub",
+  "version": "0.0.23",
+  "description": "ActivityPub/Mastodon adapter for WebThings Gateway",
+  "author": "Philippe Coval",
+  "main": "index.js",
+  "scripts": {
+    "lint": "eslint --no-ignore *.js"
+  },
+  "keywords": [
+    "iot",
+    "adapter"
+  ],
+  "license": "MPL-2.0",
+  "homepage": "https://github.com/rzr/mastodon-lite",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/rzr/mastodon-lite.git"
+  },
+  "bugs": {
+    "url": "https://github.com/rzr/mastodon-lite/issues"
+  },
+  "files": [
+    "LICENSE",
+    "README.md",
+    "SHA256SUMS",
+    "activitypub-adapter.js",
+    "activitypub-notifier.js",
+    "index.js",
+    "manifest.json",
+    "node_modules"
+  ],
+  "dependencies": {
+    "html-to-text": "^5.1.1",
+    "mastodon-lite": "0.0.22"
+  },
+  "bundledDependencies": [
+    "mastodon-lite"
+  ],
+  "devDependencies": {
+    "eslint": "^7.9.0"
+  }
+}

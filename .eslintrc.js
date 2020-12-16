@@ -6,7 +6,7 @@ module.exports = {
     'parserOptions': {
         'ecmaVersion': 5
     },
-    'ignorePatterns': ['**/mozilla-iot-*-adapter/*.js'],
+    'ignorePatterns': ['**/webthings-*-adapter/*.js'],
     'rules': {
         'accessor-pairs': 'error',
         'array-bracket-newline': 'error',

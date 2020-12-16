@@ -1,6 +1,6 @@
 {
   "author": "Philippe Coval", 
-  "description": "ActivityPub/Mastodon adapter for Mozilla IoT Gateway", 
+  "description": "ActivityPub/Mastodon adapter for WebThings Gateway", 
   "gateway_specific_settings": {
     "webthings": {
       "exec": "{nodeLoader} {path}", 

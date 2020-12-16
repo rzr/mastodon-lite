@@ -72,7 +72,7 @@ setup:
 rule/npm/version/%: package.json
 	-git tag -d ${@F}
 	-git describe --tags
-	make -C example/mozilla-iot-activitypub-adapter "$@"
+	make -C example/webthings-activitypub-adapter "$@"
 	cd example/webthing && npm version ${@F}
 	-git add example/webthing/package*.json
 	-git add example/*/package*.json

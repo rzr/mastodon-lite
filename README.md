@@ -32,7 +32,7 @@ https://peertube.mastodon.host/videos/watch/b0357106-2c8a-42b0-aeb3-efe4a6b0e127
 
 More details are explained in addon directory:
 
-* [./example/mozilla-iot-activitypub-adapter](./example/mozilla-iot-activitypub-adapter):
+* [./example/webthings-activitypub-adapter](./example/webthings-activitypub-adapter):
 
 Feedback also welcome on this Wiki page:
 
@@ -236,7 +236,7 @@ Rebuild demo from this makefile:
 
 * <https://github.com/rzr/TizenRT/tree/master/rules/mastodon-lite>
 
-## USING MOZILLA WEBTHING GATEWAY ##
+## USING WEBTHINGS GATEWAY ##
 
 ## DEMO ##
 
@@ -248,7 +248,7 @@ https://player.vimeo.com/video/279677314#web-of-things-agriculture-20180712rzr.w
 
 This "Smart Orchid" demonstrate how to link IoT to social web,
 using WebOfThings and ActivityPub,
-with Mozilla Thing project, check this wiki page from webthing-iotjs project:
+with WebThings project, check this wiki page from webthing-iotjs project:
 
 * <https://github.com/rzr/webthing-iotjs/wiki/Social>
 
